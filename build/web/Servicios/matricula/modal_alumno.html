@@ -1,0 +1,69 @@
+<div class="modal fade" id="modal_alumno" >
+  <div class="modal-dialog" style="width: 65%">
+    
+    <div class="modal-content">
+
+
+  <div class="panel-group" >
+            <div class="panel panel-primary">
+                    <div class="panel-heading"> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">LISTA DE ALUMNOS </h4>
+      </div> 
+                  <div class="panel-body">
+
+          <div class="col-md-6 input-group">
+               <span class="input-group-addon"><span class="fa fa-search"></span></span><input type="text" ng-model="search" ng-change="filter()" placeholder="Buscar registros" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <h5>Filtrado {{ filtered.length }} de {{ totalItems}} total datos</h5>
+            </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12" ng-show="filteredItems > 0">
+                <table class="table table-bordered table-sm">
+                <thead style=" background-color: lightcyan; align-content: center">
+                <th>ID&nbsp;<a ng-click="sort_by('correlativo');"><i class="fa fa-sort"></i></a></th>
+                <th>PRIMER NOMBRE&nbsp;<a ng-click="sort_by('pnombre');"><i class="fa fa-sort"></i></a></th>
+                <th>SEGUNDO NOMBRE&nbsp;<a ng-click="sort_by('snombre');"><i class="fa fa-sort"></i></a></th>
+                <th>PRIMER APELLIDO&nbsp;<a ng-click="sort_by('papellido');"><i class="fa fa-sort"></i></a></th>
+                <th>SEGUNDO APELLIDO&nbsp;<a ng-click="sort_by('sapellido');"><i class="fa fa-sort"></i></a></th>
+                <th>Selec</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filtered = (list_alumno | filter:search | orderBy : 'tipo':inverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" >
+                        
+                        <td style=" text-align: right">{{data.correlativo}}</td>
+                        <td>{{data.pnombre}}</td>
+                        <td>{{data.snombre}}</td>
+                        <td>{{data.papellido}}</td>
+                        <td>{{data.sapellido}}</td>
+                        <td style="background-color:  #7ecff4 ;text-align:  center" ng-click="selec_alumno(data)">
+                            <a   data-dismiss="modal" aria-label="Close"><i class="fa fa-edit"></i></a>
+			</td>
+                    </tr>
+                </tbody>
+                <tfoot style=" text-align: right;">
+                    
+                            <pagination   total-items="totalItems" ng-model="currentPage"  
+                                  max-size="5" boundary-links="true"  
+                                  items-per-page="numPerPage" 
+                                  class="pagination-sm" force-ellipses="true" 
+                                  first-text="Primero"  last-text="Ultimo" 
+                                  next-text="Siguiente" previous-text="Anterior"
+                                >
+                             </pagination>    
+                </tfoot>
+                </table>
+                
+            </div>
+
+
+        </div>
+                  </div>   
+          </div><!-- /.modal-content -->
+       </div>
+  </div><!-- /.modal-dialog -->
+      
+</div>
+</div>

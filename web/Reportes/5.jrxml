@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminario1" language="groovy" pageWidth="1092" pageHeight="812" orientation="Landscape" columnWidth="1072" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="7cc1cf81-17c2-4d98-8c46-eb62ea172213">
+	<property name="ireport.zoom" value="0.4665073802097333"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="4b7da9b4-7432-4d6e-9009-84eef64ef157"/>
+	<queryString>
+		<![CDATA[select id_matricula
+from matricula ]]>
+	</queryString>
+	<field name="id_matricula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="305" splitType="Stretch">
+			<rectangle>
+				<reportElement x="186" y="1" width="759" height="44" backcolor="#CCFFFF" uuid="a039a40f-77c9-4381-9523-b0a944d6c851"/>
+			</rectangle>
+			<image>
+				<reportElement x="3" y="1" width="167" height="118" uuid="aa4f3b60-0f87-4f6b-9331-cc0722c00bf9"/>
+				<imageExpression><![CDATA["/home/henry/Downloads/INSTITUTO.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="188" y="1" width="757" height="44" uuid="1216ca7c-2d32-4675-b7b8-eadda3cb49ed"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[IMNEB P/C BARCENAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="45" width="536" height="31" uuid="9a9f5395-607b-4d76-a51d-387f958ec9a3"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[2DA CLLE 3-18 ZON 2 SN MIGUEL PETAPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="76" width="315" height="28" uuid="aceb7607-5e62-49d4-a67e-78c7b0beb53b"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TELEFONO : 6633-1820]]></text>
+			</staticText>
+			<image>
+				<reportElement x="955" y="1" width="114" height="117" uuid="964fe4ab-3fd1-421d-9831-f2b64f992b05"/>
+				<imageExpression><![CDATA["/home/henry/Downloads/SISTEMA.jpeg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="0" y="133" width="772" height="58" backcolor="#CCFFFF" uuid="8a6b2d8d-d782-40fc-b1fd-0af49deb4825"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="133" width="118" height="29" uuid="f11db048-59cf-4801-ad63-3b2613a103a5"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="162" width="115" height="29" uuid="2ec0db24-2f7b-4b28-8d74-f95426dc0737"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Grado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="133" width="115" height="29" uuid="54f68768-fd42-4e64-bfe5-dd83e6ec4616"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="162" width="115" height="29" uuid="7d21c347-05e4-444b-9032-b36547d85df8"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Seccion:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="118" y="133" width="1" height="58" uuid="9148ae72-c55b-481b-9c13-736134ad9f56"/>
+			</line>
+			<line>
+				<reportElement x="425" y="133" width="1" height="58" uuid="06d3df0b-4481-4ee8-a6a8-2be581715289"/>
+			</line>
+			<line>
+				<reportElement x="542" y="133" width="1" height="58" uuid="cf05da15-ca88-45bb-b27a-2dde9e517b65"/>
+			</line>
+			<line>
+				<reportElement x="0" y="162" width="772" height="1" uuid="be6d3513-7583-41a7-b5dc-336caad7d517"/>
+			</line>
+			<rectangle>
+				<reportElement x="772" y="163" width="278" height="28" uuid="016a19c6-9860-4a1d-9bf1-bfbe6cf11627"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="772" y="163" width="115" height="29" uuid="2fb18f4a-ac5d-40d8-84e2-348c0f3ed0fa"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Jornada:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="887" y="168" width="1" height="24" uuid="9501e5a1-5c95-4385-8672-08cccd58fba2"/>
+			</line>
+			<staticText>
+				<reportElement x="778" y="119" width="109" height="29" uuid="6b99b8d0-40d3-4b76-865d-a68f55721a36"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[RECIBO:     ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="900" y="119" width="45" height="29" forecolor="#FF6666" uuid="dbb4e63d-c68f-4757-acd0-b01d1ce7d73b"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="219" width="1050" height="31" uuid="cc9e90fc-11c5-41f1-b85c-75da0821e619"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="250" width="1050" height="31" uuid="18ebbe64-1f26-42e2-b337-b5f833dc8f5a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="119" y="219" width="193" height="31" uuid="e55b00ee-bc45-4ef4-af72-1ecf1a2dbf74"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[RECIBIMOS DE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="250" width="287" height="31" uuid="f599a9e3-0c45-4776-ab7a-ce5a49af3cb4"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[POR LA CANTIDAD DE: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="104" width="118" height="29" uuid="d579b5b4-2cd9-449b-b7ce-9e24e5ddd3fb"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="813" y="93" width="100" height="20" uuid="9684d970-a4ed-42a3-aeb2-113b9bc98d94"/>
+				<textFieldExpression><![CDATA[$F{id_matricula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="480" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="287" height="31" uuid="27a33348-d7d8-4cf3-bb4d-eb012d2e2dfd"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[SELLO Y FIRMA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="31" width="1069" height="340" uuid="131df444-d074-4bbb-9319-d8098ce67381"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="3" y="335" width="1069" height="36" backcolor="#CCFFFF" uuid="68ea3eba-3866-42c7-9646-1be4fbb44ce5"/>
+			</rectangle>
+			<line>
+				<reportElement x="206" y="31" width="1" height="340" uuid="54c968e2-880a-4361-8568-6800825a6458"/>
+			</line>
+			<line>
+				<reportElement x="876" y="31" width="1" height="340" uuid="976d78a5-e5bc-4f66-92ae-9f34ff38392f"/>
+			</line>
+			<staticText>
+				<reportElement x="578" y="122" width="287" height="31" uuid="c183dbab-c74a-42d2-9203-6b6e2b1a3a95"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[PAGO DE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="888" y="182" width="28" height="31" uuid="84faa989-3463-4985-af9b-df61520b6293"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Q.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="877" y="335" width="28" height="36" uuid="e685d9fd-a2b6-4647-a6c1-9f7267096063"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Q.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="335" width="203" height="36" uuid="b1bbe8d7-928d-434f-9388-58927a27f212"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="376" width="203" height="36" uuid="45850852-359c-4ef5-9e2e-8393b1808839"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[OPERADO POR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="376" width="110" height="23" uuid="c65ecbfd-feeb-4159-b70a-bfa647ff38ea"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCU. No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="671" y="376" width="81" height="23" uuid="1e565f74-c2d7-40e9-a6e2-49b064ed844c"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BANCO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="876" y="376" width="101" height="23" uuid="8fa56468-5cf0-4fdb-9665-c25c68978d1d"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EFECTIVO:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="460" width="1066" height="1" uuid="6d47a592-5403-4c19-9e38-2fc5737dac5f"/>
+			</line>
+			<staticText>
+				<reportElement x="207" y="460" width="695" height="20" uuid="e2437dca-01bb-42d4-97c4-aff59d5fb2fd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Exento segun resolucion No. 1201-2001-AF, Articulo 8EDEC 27-92 De fecha: 25 Abril 1984]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="412" width="229" height="32" uuid="3680db80-1c80-4299-8563-3a7e22633c0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMENTARIOS]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

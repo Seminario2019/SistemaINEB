@@ -1,0 +1,67 @@
+<div class="modal fade" id="modal_perfilseries">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Series Usuarios</h4>
+      </div>
+          <div class="col-sm-3">
+                            <img ng-src="{{imagen}}" class="img-circle" alt="" width="50px" height="50px">
+                            <br>{{dato.usuario}}
+           </div>
+        <div class=" form-group form-group-sm " style="overflow-x: auto" >     
+               
+	    <!-- /.box-header -->
+            
+                        <form class=" input-group input-group-sm">
+                            <span class="input-group-addon" style="width:100px" >Lista Series</span>
+                            <select type="text" class="form-control"  placeholder="Lista Menu" ng-model="serieasig" ng-change="agregarser(serieasig)" >
+                                <option value="" >Seleccionar Opcion</option>
+                                <option ng-repeat="men in series"  value="{{men.id_men}}-{{men.tipo}}" >{{men.tipo}} - {{men.id_men}} - {{men.nombre}}</option>
+                                        
+                            </select>
+                           
+                          </form>
+            
+                            <!--<a  ng-click="agregarper(menu[menuasig].id_men,menu[menuasig].nombre,menuasig='')" class="btn btn-info" >Cargar Documento</a>-->
+                            <hr>
+                            <a  ng-click="guardarser(listaseries,variable )" class="btn btn-success fa fa-save" >. Guardar Permisos</a>
+                            
+                            
+                            <hr>
+	      
+                <table class="table-sm table-bordered table-hover"  style="width:auto" >
+                    <thead style="background-color: lightskyblue ">
+				<tr>    
+                                    <th colspan="4">Permisos asignados a {{dato.usuario}}</th>
+				</tr>
+                                <tr>    
+                                        <th>Eliminar</th>
+					<th>No  .</th>
+					<th>Serie Asignada</th>
+					<th>Serie Tipo</th>
+				</tr>
+			</thead>
+			<tbody >                                
+                            <tr ng-repeat="factura in listaseries" style="background-color: #EEEEEE" >
+                                   
+                                        <td ng-click="deleteser( $index )" style="background-color:  #f7bc60"><i class="fa fa-close"></i>
+					</td>
+					<td>{{factura.id}}</td>  
+                                        <td>{{ factura.nombre }}</td>					
+                                        <td>{{ factura.tipo }}</td>
+				</tr>
+                                
+			</tbody>
+
+                 </table>
+                 
+		</div>
+          
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  
+      <div ng-include="'Servicios/perfiles/modal_upfoto.html'"></div>
+</div>

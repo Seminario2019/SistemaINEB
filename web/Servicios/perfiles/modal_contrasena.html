@@ -1,0 +1,49 @@
+<div class="modal fade" id="modal_contrasena">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      
+        <div class="panel-group" >
+            <div class="panel panel-primary">
+                    <div class="panel-heading">  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <ol class="breadcrumb animated fadeIn fast">
+                        <li class="active"><strong>CAMBIO DE CONTRASEÑA</strong></li>
+                    </ol>  
+                  </div> 
+                  <div class="panel-body">
+                    <form ng-submit="guardarcon()" class="form-inline"   style="text-align: center; background-color: #ffffff; border-color:  #FFC414;  "    >
+                                                 
+                       <div class="form-group" style="text-align: left; margin-left: 2%; margin-right:2%;"  > 
+                        <br>   <i class="input-group "  >
+                            <span class="input-group-addon"><label style="width: 160px;">Usuario:</label></span>
+                            <input type="text" disabled="" required class="form-control"  placeholder="Estatus" size="50" ng-model="datocon.usuario">
+                           </i> 
+                        <!--br>     <i class=" input-group "  >
+                                   <span class="input-group-addon"><label style="width: 160px;">Contraseña Antigua:</label></span>
+                                   <input type="password" required  class="form-control" placeholder="Contraseña Antigua" value="" size="50" ng-model="datocon.contrasena">
+                           </i--> 
+                        <br>     <i class=" input-group "  >
+                                   <span class="input-group-addon"><label style="width: 160px;">Contraseña Neva:</label></span>
+                                   <input type="password"  required  class="form-control" placeholder="Contraseña Neva" value="" size="50" ng-model="datocon.contrasena1">
+                           </i> 
+                        <br>     <i class=" input-group "  >
+                                   <span class="input-group-addon"><label style="width: 160px;">Repetir Contraseña Nueva:</label></span>
+                                   <input type="password" required class="form-control" placeholder="Repetir Contraseña Nueva" value="" size="50" ng-model="datocon.contrasena2">
+                           </i> 
+
+                     
+                      </div>
+                      <br/>                      
+                      <button type="submit" class="btn btn-success">
+                          <span class="fa fa-save" ></span> Cambiar contraseña
+                      </button>                    
+                  </form> 
+                  </div>   
+          </div><!-- /.modal-content -->
+       </div><!-- /.modal-dialog -->
+       
+    </div>
+  </div>
+</div>
