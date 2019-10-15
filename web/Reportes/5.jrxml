@@ -26,7 +26,7 @@
 	<subDataset name="Table Dataset 1" uuid="4b7da9b4-7432-4d6e-9009-84eef64ef157"/>
 	<queryString>
 		<![CDATA[select id_matricula
-from matricula ]]>
+from matricula]]>
 	</queryString>
 	<field name="id_matricula" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -64,10 +64,6 @@ from matricula ]]>
 				</textElement>
 				<text><![CDATA[TELEFONO : 6633-1820]]></text>
 			</staticText>
-			<image>
-				<reportElement x="955" y="1" width="114" height="117" uuid="964fe4ab-3fd1-421d-9831-f2b64f992b05"/>
-				<imageExpression><![CDATA["/home/henry/Downloads/SISTEMA.jpeg"]]></imageExpression>
-			</image>
 			<rectangle>
 				<reportElement x="0" y="133" width="772" height="58" backcolor="#CCFFFF" uuid="8a6b2d8d-d782-40fc-b1fd-0af49deb4825"/>
 			</rectangle>

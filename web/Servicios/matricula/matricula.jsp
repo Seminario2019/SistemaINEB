@@ -74,12 +74,14 @@
                             <a  ng-click="editar()" class="btn btn-warning btn-sm"  ng-show="btn_editar">Editar</a>
                             <a  ng-click="buscar()" class="btn btn-default btn-sm"  ng-show="btn_buscar">Buscar</a>
                             <a  ng-click="calcelar()" class="btn btn-primary btn-sm"  ng-show="btn_cancelar">Calcelar</a>
+                            <a style="float:right "  ng-click="generar_reporte()" class="btn btn-success btn-sm" ng-show="btn_nuevo" ><span class="fa fa-print"> </span>IMPRIMIR</a>
                             
                              <div ng-include="'Servicios/matricula/modal_pagos.html'"></div> 
                              <div ng-include="'Servicios/matricula/modal_jornada.html'"></div> 
                              <div ng-include="'Servicios/matricula/modal_alumno.html'"></div>
                              <div ng-include="'Servicios/matricula/modal_grados.html'"></div>
                              <div ng-include="'Servicios/matricula/modal_matricula.html'"></div>
+                             <div ng-include="'Servicios/matricula/modal_reporte.html'"></div>
                              <div ng-include="'Servicios/actividad/modal_guarda.html'"></div> 
                  
             </div>
