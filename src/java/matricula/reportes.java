@@ -36,7 +36,7 @@ public class reportes {
 			String reportName = "C:\\Users\\usuario\\Desktop\\mio\\Seminario de tecnologia\\SistemaINEB\\web\\Reportes\\5";
                         Map<String, Object> parameters = new HashMap<String, Object>();
                         parameters.clear();
-                        parameters.put(JRParameter.REPORT_LOCALE, new Locale("es", "ES"));
+                        parameters.put(JRParameter.REPORT_LOCALE, new Locale("es", "GT"));
 			parameters.put("id",id);
 			JasperPrint print = JasperFillManager.fillReport(reportName + ".jasper", parameters, con);
 			// exports report to pdf
