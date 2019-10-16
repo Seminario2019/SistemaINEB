@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminario1" language="groovy" pageWidth="1092" pageHeight="812" orientation="Landscape" columnWidth="1072" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="7cc1cf81-17c2-4d98-8c46-eb62ea172213">
-	<property name="ireport.zoom" value="0.4665073802097333"/>
+	<property name="ireport.zoom" value="0.5644739300537774"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -25,10 +25,27 @@
 	</style>
 	<subDataset name="Table Dataset 1" uuid="4b7da9b4-7432-4d6e-9009-84eef64ef157"/>
 	<queryString>
-		<![CDATA[select id_matricula
-from matricula]]>
+		<![CDATA[SELECT * FROM matricula T0 WHERE T0.ID_MATRICULA = 1]]>
 	</queryString>
-	<field name="id_matricula" class="java.lang.Integer">
+	<field name="ID_MATRICULA" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAGO_CODIGO_PAGO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="JORNADA_ID_JORNADA" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ALUMNO_CORRELATIVO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GRADO_CODIGO_GRADO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECHA_MATRICULA" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VALOR" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -41,12 +58,12 @@ from matricula]]>
 			</rectangle>
 			<image>
 				<reportElement x="3" y="1" width="167" height="118" uuid="aa4f3b60-0f87-4f6b-9331-cc0722c00bf9"/>
-				<imageExpression><![CDATA["/home/henry/Downloads/INSTITUTO.jpeg"]]></imageExpression>
+				<imageExpression><![CDATA["../imneb.jpeg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="188" y="1" width="757" height="44" uuid="1216ca7c-2d32-4675-b7b8-eadda3cb49ed"/>
 				<textElement textAlignment="Center">
-					<font size="36"/>
+					<font size="34" isBold="false"/>
 				</textElement>
 				<text><![CDATA[IMNEB P/C BARCENAS]]></text>
 			</staticText>
@@ -60,7 +77,7 @@ from matricula]]>
 			<staticText>
 				<reportElement x="426" y="76" width="315" height="28" uuid="aceb7607-5e62-49d4-a67e-78c7b0beb53b"/>
 				<textElement textAlignment="Center">
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[TELEFONO : 6633-1820]]></text>
 			</staticText>
@@ -70,28 +87,28 @@ from matricula]]>
 			<staticText>
 				<reportElement x="0" y="133" width="118" height="29" uuid="f11db048-59cf-4801-ad63-3b2613a103a5"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Nombre:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="3" y="162" width="115" height="29" uuid="2ec0db24-2f7b-4b28-8d74-f95426dc0737"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Grado:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="426" y="133" width="115" height="29" uuid="54f68768-fd42-4e64-bfe5-dd83e6ec4616"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="427" y="162" width="115" height="29" uuid="7d21c347-05e4-444b-9032-b36547d85df8"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Seccion:]]></text>
 			</staticText>
@@ -113,7 +130,7 @@ from matricula]]>
 			<staticText>
 				<reportElement x="772" y="163" width="115" height="29" uuid="2fb18f4a-ac5d-40d8-84e2-348c0f3ed0fa"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Jornada:]]></text>
 			</staticText>
@@ -123,14 +140,14 @@ from matricula]]>
 			<staticText>
 				<reportElement x="778" y="119" width="109" height="29" uuid="6b99b8d0-40d3-4b76-865d-a68f55721a36"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[RECIBO:     ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="900" y="119" width="45" height="29" forecolor="#FF6666" uuid="dbb4e63d-c68f-4757-acd0-b01d1ce7d73b"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[No.]]></text>
 			</staticText>
@@ -143,27 +160,27 @@ from matricula]]>
 			<staticText>
 				<reportElement x="119" y="219" width="193" height="31" uuid="e55b00ee-bc45-4ef4-af72-1ecf1a2dbf74"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[RECIBIMOS DE:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="25" y="250" width="287" height="31" uuid="f599a9e3-0c45-4776-ab7a-ce5a49af3cb4"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[POR LA CANTIDAD DE: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="186" y="104" width="118" height="29" uuid="d579b5b4-2cd9-449b-b7ce-9e24e5ddd3fb"/>
 				<textElement>
-					<font size="24"/>
+					<font size="22"/>
 				</textElement>
 				<text><![CDATA[FECHA:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="813" y="93" width="100" height="20" uuid="9684d970-a4ed-42a3-aeb2-113b9bc98d94"/>
-				<textFieldExpression><![CDATA[$F{id_matricula}]]></textFieldExpression>
+				<reportElement x="304" y="107" width="100" height="20" uuid="56f0e1b5-620e-41a0-9ba4-ae2623a1a8df"/>
+				<textFieldExpression><![CDATA[$F{FECHA_MATRICULA}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

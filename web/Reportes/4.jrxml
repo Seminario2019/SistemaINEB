@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminario1" language="groovy" pageWidth="1092" pageHeight="812" orientation="Landscape" columnWidth="1072" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="7cc1cf81-17c2-4d98-8c46-eb62ea172213">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.4665073802097333"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="181"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -39,7 +39,7 @@
 			<staticText>
 				<reportElement x="188" y="1" width="757" height="44" uuid="1216ca7c-2d32-4675-b7b8-eadda3cb49ed"/>
 				<textElement textAlignment="Center">
-					<font size="36"/>
+					<font size="36" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IMNEB P/C BARCENAS]]></text>
 			</staticText>

@@ -313,16 +313,14 @@
           
       };
    var i=0;   
-   $scope.generar_reporte = function(){
+   $scope.generar_reporte = function(id){
              if($scope.datos.id_grado != 0){
                 $scope.animmar = true;$scope.listadet++; 
                 $("#modal_reporte").modal();
-                $http.post("/SistemaINEB/matricula_reporte")
+                $http.post("/SistemaINEB/matricula_reporte",{id:id})
                         .success(function(data){
-                 $scope.archivo = data+"?1."+i;            
+                 $scope.archivo = data+"?1."+i;  
                         $scope.animmar = false; 
-                        //$("#modal_reporteExc").modal();
-                 
                  })
                  .error(function(data, status) {
                       swal("Error","Error:#"+status+"-"+ data, "error");                   
@@ -331,7 +329,7 @@
                     })
                 } 
                 else {$("#modal_reporte").modal();}
-                    
+                 i++;    
                     
         };      
       

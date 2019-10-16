@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
-import reportes.reportes;
 
 /**
  *
@@ -40,16 +39,26 @@ public class matricula_reporte extends HttpServlet {
         BufferedReader br = request.getReader();
          
         
-       
+        try {
             
+            
+            String str = null;
+            while ((str = br.readLine()) != null) {
+                sb.append(str);
+            }
+            JSONObject jObj = new JSONObject(sb.toString());
+            
+            String id  = jObj.getString("id");      
       reportes crud = new reportes();
       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println(crud.matriculas());
-        }
+            out.println(crud.matriculas(id));
+       }
         
-              
+                } catch (JSONException ex) {
+            java.util.logging.Logger.getLogger(matricula_nuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminario1" language="groovy" pageWidth="1092" pageHeight="812" orientation="Landscape" columnWidth="1072" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="7cc1cf81-17c2-4d98-8c46-eb62ea172213">
 	<property name="ireport.zoom" value="0.6830134553650705"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="45"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -24,15 +24,18 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="4b7da9b4-7432-4d6e-9009-84eef64ef157"/>
+	<queryString>
+		<![CDATA[select id_matricula
+from matricula]]>
+	</queryString>
+	<field name="id_matricula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="119" splitType="Stretch">
-			<image>
-				<reportElement x="904" y="0" width="167" height="118" uuid="aa4f3b60-0f87-4f6b-9331-cc0722c00bf9"/>
-				<imageExpression><![CDATA["/home/henry/Downloads/INSTITUTO.jpeg"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="196" y="39" width="677" height="1" uuid="ed132de2-1b9b-477c-9baa-34d3fb18cd95"/>
 			</line>
@@ -96,10 +99,6 @@
 	</title>
 	<detail>
 		<band height="670" splitType="Stretch">
-			<image>
-				<reportElement x="3" y="543" width="299" height="126" uuid="964fe4ab-3fd1-421d-9831-f2b64f992b05"/>
-				<imageExpression><![CDATA["/home/henry/Downloads/SISTEMA.jpeg"]]></imageExpression>
-			</image>
 			<rectangle>
 				<reportElement x="632" y="22" width="33" height="20" uuid="8d9ff7de-f483-4a9a-af02-1818354f9d54"/>
 			</rectangle>
@@ -497,6 +496,14 @@
 			<line>
 				<reportElement x="702" y="23" width="1" height="19" uuid="fac7d697-30c5-4318-bccf-8d574d935959"/>
 			</line>
+			<staticText>
+				<reportElement x="347" y="96" width="100" height="20" uuid="1b6a492c-4f20-42bb-97af-af007ba7d3f4"/>
+				<text><![CDATA[id_matricula]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="447" y="96" width="100" height="20" uuid="bde31e6a-794d-4f5c-ab79-c2759f38c1a1"/>
+				<textFieldExpression><![CDATA[$F{id_matricula}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
