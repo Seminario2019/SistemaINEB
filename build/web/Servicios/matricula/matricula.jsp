@@ -1,5 +1,9 @@
- <?xml version="1.0" encoding="UTF-8" ?>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+ 
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <div class="panel-group" >
         <div class="panel panel-primary">
             <div class="panel-heading"> 
@@ -81,7 +85,7 @@
                              <div ng-include="'Servicios/matricula/modal_alumno.html'"></div>
                              <div ng-include="'Servicios/matricula/modal_grados.html'"></div>
                              <div ng-include="'Servicios/matricula/modal_matricula.html'"></div>
-                             <div ng-include="'Servicios/matricula/modal_reporte.html'"></div>
+                             <div ng-include="'Servicios/matricula/modal_reporte.jsp'"></div>
                              <div ng-include="'Servicios/actividad/modal_guarda.html'"></div> 
                  
             </div>

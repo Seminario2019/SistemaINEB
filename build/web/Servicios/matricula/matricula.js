@@ -317,16 +317,16 @@
              if($scope.datos.id_grado != 0){
                 $scope.animmar = true;$scope.listadet++; 
                 $("#modal_reporte").modal();
-                $http.post("/SistemaINEB/matricula_reporte",{id:id})
-                        .success(function(data){
-                 $scope.archivo = data+"?1."+i;  
+//                $http.post("/SistemaINEB/matricula_reporte",{id:})
+//                        .success(function(data){
+                 $scope.archivo = "Servicios/matricula/boleta_pago.jsp?id="+id;  
                         $scope.animmar = false; 
-                 })
-                 .error(function(data, status) {
-                      swal("Error","Error:#"+status+"-"+ data, "error");                   
-                    })
-                .finally(function() {scope.animmar = false;  
-                    })
+//                 })
+//                 .error(function(data, status) {
+//                      swal("Error","Error:#"+status+"-"+ data, "error");                   
+//                    })
+//                .finally(function() {scope.animmar = false;  
+//                    })
                 } 
                 else {$("#modal_reporte").modal();}
                  i++;    

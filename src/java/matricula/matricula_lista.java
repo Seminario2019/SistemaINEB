@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
+/*
  * @author usuario
  */
 @WebServlet(name = "matricula_lista", urlPatterns = {"/matricula_lista"})
@@ -53,6 +52,7 @@ public class matricula_lista extends HttpServlet {
       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("application/x-json;charset=UTF-8");
             out.println(crud.lista());
         }
         
