@@ -88,6 +88,7 @@ public class Grados_lista extends HttpServlet {
       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("application/x-json;charset=UTF-8");
             out.println(crud.Grados_lista());
         }
         
