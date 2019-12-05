@@ -5,7 +5,6 @@
  */
 package matricula;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;

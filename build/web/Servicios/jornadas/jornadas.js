@@ -11,7 +11,7 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
     $scope.editando = false;
          
      
-        $http.post("/SistemaINEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
+        $http.post("/e/SistemaIMNEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
              $scope.list = data; 
              $scope.intc++;
             })
@@ -27,7 +27,7 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
         $scope.mostrarModal = function( usuario ){
                 $scope.variable = usuario;
 		// console.log( cliente );
-		$http.post("/SistemaINEB/Jornada_seljornada",{ id :$scope.variable})
+		$http.post("/e/SistemaIMNEB/Jornada_seljornada",{ id :$scope.variable})
                         .success(function(response){
                     $scope.dato = response[0];$scope.intc++;
                     
@@ -56,13 +56,13 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
 	}
         $scope.guardarnuevo = function(dato){ 
           if($scope.dato.descripcion != "" ){
-            $http.post("/SistemaINEB/Jornada_nuevo",{datos:dato}).success(function(data){
+            $http.post("/e/SistemaIMNEB/Jornada_nuevo",{datos:dato}).success(function(data){
             
               if(data[0].mensaje == 'uno'){
                   swal( 'Exitoso!', 'Datos Guardados!', 'success')   
                   $scope.limpia(); 
                   $("#modal_nuejonada").modal('hide'); 
-                  $http.post("/SistemaINEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
+                  $http.post("/e/SistemaIMNEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
                         $scope.list= data;
                         $scope.paginas();
                     });
@@ -114,7 +114,7 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
         ;
         $scope.guardar = function refreshData() {
           
-           $http.post("/SistemaINEB/Jornada_guadaEdit"
+           $http.post("/e/SistemaIMNEB/Jornada_guadaEdit"
             ,{datos:$scope.dato})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
@@ -141,7 +141,7 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
                         btn1:false,
                         btn2:true
                     };
-                     $http.post("/SistemaINEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
+                     $http.post("/e/SistemaIMNEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
                             $scope.list = data; 
                             $scope.intc++;
                        });

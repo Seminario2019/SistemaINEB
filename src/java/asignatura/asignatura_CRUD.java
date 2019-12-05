@@ -29,10 +29,10 @@ public class asignatura_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT\n" +
-"     case when MAX(CODIGO_ASIGNATURA) IS NULL then 1\n" +
-"        else MAX(CODIGO_ASIGNATURA) +1   END AS id\n" +
-"FROM  ASIGNATURA; ");
+      ResultSet rs = stmt.executeQuery("select\n" +
+"   case when max(codigo_asignatura) is null then 1\n" +
+"   else max(codigo_asignatura) +1   end as id\n" +
+"from  asignatura;");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -57,10 +57,10 @@ public class asignatura_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT t0.CODIGO_ASIGNATURA as id, t0.CODIGO_GRADO as id_grado,t1.NOMBRE as nombre_grado, rtrim(t0.NOMBRE_CURSO) as nombre \n" +
-"FROM asignatura t0\n" +
-"INNER JOIN grado t1 on t1.CODIGO_GRADO = t0.CODIGO_GRADO\n" +
-"order by CODIGO_ASIGNATURA asc");
+      ResultSet rs = stmt.executeQuery("select t0.codigo_asignatura as id, t0.codigo_grado as id_grado,t1.nombre as nombre_grado, rtrim(t0.nombre_curso) as nombre \n" +
+"from asignatura t0\n" +
+"inner join grado t1 on t1.codigo_grado = t0.codigo_grado\n" +
+"order by codigo_asignatura asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -89,8 +89,8 @@ public class asignatura_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -119,10 +119,10 @@ public class asignatura_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-       ResultSet rs = stmt1.executeQuery("SELECT\n" +
-"     case when MAX(CODIGO_ASIGNATURA) IS NULL then 1\n" +
-"        else MAX(CODIGO_ASIGNATURA) +1   END AS id\n" +
-"FROM  ASIGNATURA; ");
+       ResultSet rs = stmt1.executeQuery("select\n" +
+"   case when max(codigo_asignatura) is null then 1\n" +
+"      else max(codigo_asignatura) +1   end as id\n" +
+"from  asignatura; ");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -134,8 +134,8 @@ public class asignatura_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO ASIGNATURA (CODIGO_ASIGNATURA,CODIGO_GRADO,NOMBRE_CURSO) \n" +
-                     "VALUES  (?,?,?)";
+      String query = "Insert into asignatura (codigo_asignatura,codigo_grado,nombre_curso) \n" +
+"                     values  (?,?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id1);
                                 stmt.setString(2,id_grado);
@@ -171,10 +171,10 @@ public class asignatura_CRUD {
     try {
       Connection con = conn.DBConect();
       
-   String query = "UPDATE asignatura \n" +
-"               SET NOMBRE_CURSO = ? \n" +
-"               , CODIGO_GRADO = ? \n" +
-"                WHERE  CODIGO_ASIGNATURA= ?";
+   String query = "update asignatura \n" +
+"              set nombre_curso = ? \n" +
+"               , codigo_grado = ? \n" +
+"                where  codigo_asignatura= ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,nombre);
                                 stmt.setInt(2,Integer.parseInt(id_grado));

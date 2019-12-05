@@ -6,17 +6,9 @@
 
 <%@page import="org.json.JSONObject"%>
 <%@page import="java.io.BufferedReader"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
 
 <%@ page import="net.sf.jasperreports.engine.JasperExportManager"%>
-<%@ page import="java.sql.Connection"%>        
-<%@ page contentType="application/pdf" %>
+<%@ page import="java.sql.Connection"%>    
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="Servlet.Conexion" %>
 <%@ page import="java.sql.Connection" %>
@@ -29,28 +21,39 @@
 <%@ page import="net.sf.jasperreports.engine.JasperFillManager" %>
 <%@ page import="net.sf.jasperreports.engine.JasperPrint" %>
 <%@ page import="net.sf.jasperreports.engine.export.JRPdfExporter" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
 
 <%
           
             String id  = request.getParameter("id");
             ServletContext context = request.getServletContext();
-  String realpath = context.getRealPath("/");
-  System.out.print(realpath);
-     Conexion conn =  new Conexion();     
-      Connection con= conn.DBConect();
-String reportName = realpath+"\\Reportes\\5.jasper";
-Map<String, Object> parameters = new HashMap<String, Object>();
+            String realpath = context.getRealPath("/");
+            out.write(realpath);
+        try {     
+               Conexion conn =  new Conexion();     
+                Connection con= conn.DBConect();
+          String reportName = realpath+"Reportes/3.jasper";
+          out.write(realpath+"Reportes/");
+          out.write(reportName);
+          Map<String, Object> parameters = new HashMap<String, Object>();
                         parameters.clear();
                         parameters.put(JRParameter.REPORT_LOCALE, new Locale("es", "GT"));
-			parameters.put("id",id);                      
+			parameters.put("id",id);                                   
 JasperPrint print = JasperFillManager.fillReport(reportName,parameters,con);
 
 
-JasperExportManager.exportReportToPdfStream(print,
-response.getOutputStream());
-
-		
-
+JasperExportManager.exportReportToPdfStream(print,response.getOutputStream());
+} catch (Exception e) {
+                     out.write( "error: "+e.toString());
+                       
+		} 
 %>
+
     </body>
 </html>

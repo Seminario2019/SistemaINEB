@@ -30,10 +30,10 @@ public class matricula_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT\n" +
-"     case when MAX(ID_MATRICULA) IS NULL then 1\n" +
-"        else MAX(ID_MATRICULA) +1   END AS id\n" +
-"FROM  matricula; ");
+      ResultSet rs = stmt.executeQuery("select\n" +
+"    case when max(id_matricula) is null then 1\n" +
+"        else max(id_matricula) +1   end as id\n" +
+"from  matricula; ");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -58,28 +58,29 @@ public class matricula_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT t0.ID_MATRICULA, T1.CODIGO_PAGO,T1.TIPO_PAGO,T2.ID_JORNADA,T2.DESCRIPCION,T3.CORRELATIVO, CONCAT(T3.PRIMER_NOMBRE,\" \",T3.SEGUNDO_NOMBRE,\" \",T3.PRIMER_APELLIDO) AS NOMBRE, T4.CODIGO_GRADO,T4.NOMBRE AS GRADO,\n" +
-"t0.FECHA_MATRICULA,t0.VALOR\n" +
-"FROM matricula T0\n" +
-"INNER JOIN pago T1 ON T0.PAGO_CODIGO_PAGO = T1.CODIGO_PAGO\n" +
-"INNER JOIN jornada T2 ON T0.JORNADA_ID_JORNADA = t2.ID_JORNADA\n" +
-"INNER JOIN alumno T3 ON T0.ALUMNO_CORRELATIVO = T3.CORRELATIVO\n" +
-"INNER JOIN grado T4 ON T0.GRADO_CODIGO_GRADO = T4.CODIGO_GRADO                                             \n" +
-"order by t0.ID_MATRICULA asc");
+      ResultSet rs = stmt.executeQuery("select t0.id_matricula, t1.codigo_pago,t1.tipo_pago,t2.id_jornada,t2.descripcion,t3.correlativo, concat(t3.primer_nombre,\" \",t3.segundo_nombre,\" \",t3.primer_apellido) as nombre, t4.codigo_grado,t4.nombre as grado,\n" +
+"t0.fecha_matricula,t0.valor\n" +
+"from matricula t0\n" +
+"inner join pago t1 on t0.pago_codigo_pago = t1.codigo_pago\n" +
+"inner join jornada t2 on t0.jornada_id_jornada = t2.id_jornada\n" +
+"inner join alumno t3 on t0.alumno_correlativo = t3.correlativo\n" +
+"inner join grado t4 on t0.grado_codigo_grado = t4.codigo_grado                                             \n" +
+"order by t0.id_matricula asc");
       while(rs.next()){
-            JSONObject obj=new JSONObject();
-            obj.put("id", rs.getString("ID_MATRICULA"));
-            obj.put("id_pago", rs.getString("CODIGO_PAGO"));
-            obj.put("pago", rs.getString("TIPO_PAGO"));
-            obj.put("id_jornada", rs.getString("ID_JORNADA"));
-            obj.put("jornada", rs.getString("DESCRIPCION"));
-            obj.put("id_alumno", rs.getString("CORRELATIVO"));
-            obj.put("alumno", rs.getString("NOMBRE"));
-            obj.put("id_grado", rs.getString("CODIGO_GRADO"));
-            obj.put("grado", rs.getString("GRADO"));
-            obj.put("valor", rs.getString("VALOR"));
-            obj.put("nfecha", rs.getString("FECHA_MATRICULA"));
+            JSONObject obj=new JSONObject();            
+            obj.put("id", rs.getString("id_matricula"));
+            obj.put("id_pago", rs.getString("codigo_pago"));
+            obj.put("pago", rs.getString("tipo_pago"));
+            obj.put("id_jornada", rs.getString("id_jornada"));
+            obj.put("jornada", rs.getString("descripcion"));
+            obj.put("id_alumno", rs.getString("correlativo"));
+            obj.put("alumno", rs.getString("nombre"));
+            obj.put("id_grado", rs.getString("codigo_grado"));
+            obj.put("grado", rs.getString("grado"));
+            obj.put("valor", rs.getString("valor"));
+            obj.put("nfecha", rs.getString("fecha_matricula"));
             
+
                  
             list.put(obj);
         }
@@ -101,8 +102,8 @@ public class matricula_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -131,10 +132,10 @@ public class matricula_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-            ResultSet rs = stmt1.executeQuery("SELECT\n" +
-"     case when MAX(ID_MATRICULA) IS NULL then 1\n" +
-"        else MAX(ID_MATRICULA) +1   END AS id\n" +
-"FROM  matricula; ");
+            ResultSet rs = stmt1.executeQuery("select\n" +
+"     case when max(id_matricula) is null then 1\n" +
+"        else max(id_matricula) +1   end as id\n" +
+"from  matricula;");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -146,8 +147,8 @@ public class matricula_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO matricula (ID_MATRICULA,PAGO_CODIGO_PAGO,JORNADA_ID_JORNADA,ALUMNO_CORRELATIVO,GRADO_CODIGO_GRADO,VALOR,FECHA_MATRICULA) \n" +
-                     "VALUES  (?,?,?,?,?,?,'"+nfecha+"')";
+      String query = "insert into matricula (id_matricula,pago_codigo_pago,jornada_id_jornada,alumno_correlativo,grado_codigo_grado,valor,fecha_matricula) \n" +
+"                     values  (?,?,?,?,?,?,'"+nfecha+"')";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(id));
                                 stmt.setInt(2,Integer.parseInt(id_pago));
@@ -185,14 +186,14 @@ public class matricula_CRUD {
      
     try {
       Connection con = conn.DBConect();  
-   String query = "UPDATE matricula \n" +                   
-"               SET PAGO_CODIGO_PAGO = ? \n" +
-"               , JORNADA_ID_JORNADA = ? \n" +
-"               , ALUMNO_CORRELATIVO = ? \n" +
-"               , GRADO_CODIGO_GRADO = ? \n" +
-"               , VALOR = ? \n" +
-"               , FECHA_MATRICULA = '"+nfecha+"' \n" +
-"                WHERE  ID_MATRICULA = ?";
+   String query = "update matricula                    \n" +
+"               set pago_codigo_pago = ? \n" +
+"               , jornada_id_jornada = ? \n" +
+"               , alumno_correlativo = ? \n" +
+"               , grado_codigo_grado = ? \n" +
+"               , valor = ? \n" +
+"               , fecha_matricula = '"+nfecha+"' \n" +
+"                where  id_matricula = ?";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(id_pago));
                                 stmt.setInt(2,Integer.parseInt(id_jornada));

@@ -84,7 +84,7 @@
         
         
        /*obtenemos los datos del usuario */
-        $http.post('/SistemaINEB/usuario',{ usuario : serveData.data.usuario })
+        $http.post('/e/SistemaIMNEB/usuario',{ usuario : serveData.data.usuario })
            .success(function(record3){
                $scope.intc++;
                  $scope.usuario =  record3;
@@ -96,7 +96,7 @@
          });
          
          /*obtenemos las opciones del menu que tiene permisos el usuario*/
-          $http.post('/SistemaINEB/menu').success(function(record4){
+          $http.post('/e/SistemaIMNEB/menu').success(function(record4){
            $scope.menu = record4;  
            
              $scope.currentPage = 1; //current page

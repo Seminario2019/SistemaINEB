@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">    
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
     <link rel="icon" type="image/jpg" href="icon.jpg" />
-    <meta name="description" content="NetInfo"/>    
+    <meta name="description" content="SistemaGestion"/>    
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">    
     
     <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>

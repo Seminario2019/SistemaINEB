@@ -32,7 +32,7 @@
     };
     $scope.campos();
     $scope.numero_s = function(){
-        $http.post("/SistemaINEB/pagos_correlativo").success(function( data ){
+        $http.post("/e/SistemaIMNEB/pagos_correlativo").success(function( data ){
 		$scope.datos.codigo = data[0].id;
 	});
     }
@@ -97,7 +97,7 @@
     
 
     $scope.lista_pagos = function(){       
-      $http.post("/SistemaINEB/pagos_lista" ).success(function(data){
+      $http.post("/e/SistemaIMNEB/pagos_lista" ).success(function(data){
              $scope.list_pagos = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -152,7 +152,7 @@
            $scope.btn_guardar = false;  
         if($scope.btn_editar1 == false){   
            $scope.btn_guardar = false;  
-            $http.post("/SistemaINEB/pagos_nuevo",
+            $http.post("/e/SistemaIMNEB/pagos_nuevo",
             {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -182,7 +182,7 @@
                 });
            
         }else{
-            $http.post("/SistemaINEB/pagos_guadaEdit",
+            $http.post("/e/SistemaIMNEB/pagos_guadaEdit",
              {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){

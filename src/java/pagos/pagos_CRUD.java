@@ -31,10 +31,10 @@ public class pagos_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT\n" +
-"  case when MAX(codigo_pago) IS NULL then 1\n" +
-"else MAX(codigo_pago) +1   END AS id\n" +
-"FROM  pago ");
+      ResultSet rs = stmt.executeQuery("select\n" +
+"  case when max(codigo_pago) is null then 1\n" +
+"else max(codigo_pago) +1   end as id\n" +
+"from  pago");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -59,14 +59,14 @@ public class pagos_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT t0.CODIGO_PAGO, T0.TIPO_PAGO, T0.FECHA_PAGO\n" +
-"FROM pago T0\n" +
-"order by t0.CODIGO_PAGO asc");
+      ResultSet rs = stmt.executeQuery("select t0.codigo_pago, t0.tipo_pago, t0.fecha_pago\n" +
+"from pago t0\n" +
+"order by t0.codigo_pago asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
-            obj.put("codigo", rs.getString("CODIGO_PAGO"));
-            obj.put("pago", rs.getString("TIPO_PAGO"));
-            obj.put("nfecha", rs.getString("FECHA_PAGO"));
+            obj.put("codigo", rs.getString("codigo_pago"));
+            obj.put("pago", rs.getString("tipo_pago"));
+            obj.put("nfecha", rs.getString("fecha_pago"));
             
                  
             list.put(obj);
@@ -89,8 +89,8 @@ public class pagos_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -119,10 +119,10 @@ public class pagos_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-      ResultSet rs = stmt1.executeQuery("SELECT\n" +
-"  case when MAX(codigo_pago) IS NULL then 1\n" +
-"else MAX(codigo_pago) +1   END AS id\n" +
-"FROM  pago ");
+      ResultSet rs = stmt1.executeQuery("select\n" +
+"  case when max(codigo_pago) is null then 1\n" +
+"else max(codigo_pago) +1   end as id\n" +
+"from  pago ");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -133,8 +133,8 @@ public class pagos_CRUD {
       stmt1.close();      
       con.close();
       con = conn.DBConect();
-      String query = "INSERT INTO pago (CODIGO_PAGO,TIPO_PAGO,FECHA_PAGO) \n" +
-                     "VALUES  (?,?,'"+nfecha+"')";
+      String query = "insert into pago (codigo_pago,tipo_pago,fecha_pago) \n" +
+"                     values  (?,?,'"+nfecha+"')";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(codigo));
                                 stmt.setString(2,pago);
@@ -168,10 +168,10 @@ public class pagos_CRUD {
      
     try {
       Connection con = conn.DBConect();    
-   String query = "UPDATE pago \n" +                   
-"               SET TIPO_PAGO = ? \n" +
-"               , FECHA_PAGO = '"+nfecha+"' \n" +
-"                WHERE  CODIGO_PAGO = ?";
+   String query = "update pago                    \n" +
+"               set tipo_pago = ? \n" +
+"               , fecha_pago = '"+nfecha+"' \n" +
+"                where  codigo_pago = ?";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,pago);
                                 stmt.setInt(2,Integer.parseInt(codigo));

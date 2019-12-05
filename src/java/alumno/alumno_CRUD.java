@@ -30,10 +30,10 @@ public class alumno_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT\n" +
-"     case when MAX(CORRELATIVO) IS NULL then 1\n" +
-"        else MAX(CORRELATIVO) +1   END AS id\n" +
-"FROM  ALUMNO; ");
+      ResultSet rs = stmt.executeQuery("select\n" +
+"     case when max(correlativo) is null then 1\n" +
+"        else max(correlativo) +1   end as id\n" +
+"from  alumno; ");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -58,9 +58,9 @@ public class alumno_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT t0.CORRELATIVO, T0.CODIGO_ALUMNO, T0.PRIMER_NOMBRE, T0.SEGUNDO_NOMBRE,T0.PRIMER_APELLIDO,T0.SEGUNDO_APELLIDO, T0.FECHA_NACIMIENTO\n" +
-"FROM alumno T0\n" +
-"order by t0.CORRELATIVO asc");
+      ResultSet rs = stmt.executeQuery("select t0.correlativo, t0.codigo_alumno, t0.primer_nombre, t0.segundo_nombre,t0.primer_apellido,t0.segundo_apellido, t0.fecha_nacimiento\n" +
+"from alumno t0\n" +
+"order by t0.correlativo asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("correlativo", rs.getString("CORRELATIVO"));
@@ -92,8 +92,8 @@ public class alumno_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -122,10 +122,10 @@ public class alumno_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-      ResultSet rs = stmt1.executeQuery("SELECT\n" +
-"     case when MAX(CORRELATIVO) IS NULL then 1\n" +
-"        else MAX(CORRELATIVO) +1   END AS id\n" +
-"FROM  ALUMNO; ");
+      ResultSet rs = stmt1.executeQuery("select\n" +
+"     case when max(correlativo) is null then 1\n" +
+"        else max(correlativo) +1   end as id\n" +
+"from  alumno;");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -137,8 +137,8 @@ public class alumno_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO ALUMNO (CORRELATIVO,CODIGO_ALUMNO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,FECHA_NACIMIENTO) \n" +
-                     "VALUES  (?,?,?,?,?,?,'"+nfecha+"')";
+      String query = "insert into alumno (correlativo,codigo_alumno,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento) \n" +
+"                     values  (?,?,?,?,?,?,'"+nfecha+"')";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(correlativo));
                                 stmt.setInt(2,Integer.parseInt(codigo));
@@ -177,14 +177,14 @@ public class alumno_CRUD {
     try {
       Connection con = conn.DBConect();
       
-   String query = "UPDATE alumno \n" +                   
-"               SET CODIGO_ALUMNO = ? \n" +
-"               , PRIMER_NOMBRE = ? \n" +
-"               , SEGUNDO_NOMBRE = ? \n" +
-"               , PRIMER_APELLIDO = ? \n" +
-"               , SEGUNDO_APELLIDO = ? \n" +
-"               , FECHA_NACIMIENTO = '"+nfecha+"' \n" +
-"                WHERE  CORRELATIVO = ?";
+   String query = "update alumno                    \n" +
+"               set codigo_alumno = ? \n" +
+"               , primer_nombre = ? \n" +
+"               , segundo_nombre = ? \n" +
+"               , primer_apellido = ? \n" +
+"               , segundo_apellido = ? \n" +
+"               , fecha_nacimiento = '"+nfecha+"' \n" +
+"                where  correlativo = ?";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(codigo));
                                 stmt.setString(2,pnombre);

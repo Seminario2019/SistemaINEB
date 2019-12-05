@@ -43,7 +43,7 @@
           </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
-              <a>
+              <a href="https://umg.edu.gt" target="blank">
                   <img src="umg.png" class="img-thumbnail" alt="" width="150px" height="40px">
                   
                 </a>
@@ -98,7 +98,7 @@
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2019 
-            <a href="" target="blank">Instituto Mixto Nocturno IMNEB</a>.
+            <a href="https://www.imnebpc.edu.gt" target="blank">Instituto Mixto Nocturno IMNEB</a>.
         </strong> Derechos reservados.
       </footer>
 

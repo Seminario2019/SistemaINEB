@@ -29,10 +29,10 @@ public class actividad_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT\n" +
-"     case when MAX(ID_ACTIVIDAD) IS NULL then 1\n" +
-"        else MAX(ID_ACTIVIDAD) +1   END AS id\n" +
-"FROM  ACTIVIDAD; ");
+      ResultSet rs = stmt.executeQuery("select\n" +
+"     case when max(id_actividad) is null then 1\n" +
+"        else max(id_actividad) +1   end as id\n" +
+"from  actividad; ");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -57,11 +57,11 @@ public class actividad_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT T0.ID_ACTIVIDAD as id,t0.CODIGO_ASIGNATURA as id_signatura,t1.NOMBRE_CURSO as asignatura, t0.ID_TIPO_ACTIVIDAD as id_tactividad,t2.NOMBRE as tactividad \n" +
-"FROM actividad t0\n" +
-"INNER JOIN asignatura t1 on t1.CODIGO_ASIGNATURA = t0.CODIGO_ASIGNATURA\n" +
-"INNER JOIN tipo_actividad t2 on t2.ID_TIPO_ACTIVIDAD = t0.ID_TIPO_ACTIVIDAD\n" +
-"order by T0.ID_ACTIVIDAD asc");
+      ResultSet rs = stmt.executeQuery("select t0.id_actividad as id,t0.codigo_asignatura as id_signatura,t1.nombre_curso as asignatura, t0.id_tipo_actividad as id_tactividad,t2.nombre as tactividad \n" +
+"from actividad t0\n" +
+"inner join asignatura t1 on t1.codigo_asignatura = t0.codigo_asignatura\n" +
+"inner join tipo_actividad t2 on t2.id_tipo_actividad = t0.id_tipo_actividad\n" +
+"order by t0.id_actividad asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -91,8 +91,8 @@ public class actividad_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -121,10 +121,10 @@ public class actividad_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-      ResultSet rs = stmt1.executeQuery("SELECT\n" +
-"     case when MAX(ID_ACTIVIDAD) IS NULL then 1\n" +
-"        else MAX(ID_ACTIVIDAD) +1   END AS id\n" +
-"FROM  ACTIVIDAD; ");
+      ResultSet rs = stmt1.executeQuery("select\n" +
+"    case when max(id_actividad) is null then 1\n" +
+"        else max(id_actividad) +1   end as id\n" +
+"from  actividad;");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -136,8 +136,8 @@ public class actividad_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO ACTIVIDAD (ID_ACTIVIDAD,CODIGO_ASIGNATURA,ID_TIPO_ACTIVIDAD) \n" +
-                     "VALUES  (?,?,?)";
+      String query = "insert into actividad (id_actividad,codigo_asignatura,id_tipo_actividad) \n" +
+"                     values  (?,?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id1);
                                 stmt.setInt(2,Integer.parseInt(id_asignatura));
@@ -172,10 +172,10 @@ public class actividad_CRUD {
      
     try {
       Connection con = conn.DBConect();
-   String query = "UPDATE ACTIVIDAD \n" +
-"               SET CODIGO_ASIGNATURA = ? \n" +
-"               , ID_TIPO_ACTIVIDAD = ? \n" +
-"                WHERE  ID_ACTIVIDAD= ?";
+   String query = "update actividad \n" +
+"               set codigo_asignatura = ? \n" +
+"               , id_tipo_actividad = ? \n" +
+"                where  id_actividad= ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,Integer.parseInt(id_asignatura));
                                 stmt.setInt(2,Integer.parseInt(id_tactividad));

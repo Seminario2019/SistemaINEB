@@ -11,7 +11,7 @@
        
        /*Validamos usuario encriptando con metodo MD5*/
       $scope.entrar = function(user,pass) {  
-        $http.post('/SistemaINEB/Servlet_Usuarios',{ usuario : user , contrasena : md5.createHash(pass) })
+        $http.post('/e/SistemaIMNEB/Servlet_Usuarios',{ usuario : user , contrasena : md5.createHash(pass) })
         .success(function(data) {
            // si no existe el usuario nos muestre un alerta de error
            if (data.length == 0){

@@ -40,7 +40,7 @@
     };
     $scope.campos();
     $scope.numero_s = function(){
-        $http.post("/SistemaINEB/matricula_correlativo").success(function( data ){
+        $http.post("/e/SistemaIMNEB/matricula_correlativo").success(function( data ){
 		$scope.datos.id = data[0].id;
 	});
     }
@@ -102,7 +102,7 @@
         
         $("#modal_matricula").modal();
     }
-    $http.post("/SistemaINEB/pagos_lista" ).success(function(data){
+    $http.post("/e/SistemaIMNEB/pagos_lista" ).success(function(data){
              $scope.list_pagos = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -110,14 +110,14 @@
     $scope.lista_pagos  = function(){ 
          $("#modal_pagos").modal();
     }
-     $http.post("/SistemaINEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
+     $http.post("/e/SistemaIMNEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
              $scope.list_jornada = data; 
              $scope.intc++;
             })
     $scope.lista_jornada  = function(){ 
          $("#modal_jornada").modal();
     }
-          $http.post("/SistemaINEB/alumno_lista" ).success(function(data){
+          $http.post("/e/SistemaIMNEB/alumno_lista" ).success(function(data){
              $scope.list_alumno = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -125,7 +125,7 @@
     $scope.lista_alumno  = function(){ 
          $("#modal_alumno").modal();
     }
-    $http.post("/SistemaINEB/Grados_lista" ).success(function(data){
+    $http.post("/e/SistemaIMNEB/Grados_lista" ).success(function(data){
              $scope.list_grado = data; 
              $scope.intc++;
             }); 
@@ -134,7 +134,7 @@
     }
     
     $scope.lista_matricula = function(){       
-      $http.post("/SistemaINEB/matricula_lista" ).success(function(data){
+      $http.post("/e/SistemaIMNEB/matricula_lista" ).success(function(data){
              $scope.list_matricula = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -198,7 +198,7 @@
            $scope.btn_guardar = false;  
         if($scope.btn_editar1 == false){   
            $scope.btn_guardar = false;  
-            $http.post("/SistemaINEB/matricula_nuevo",
+            $http.post("/e/SistemaIMNEB/matricula_nuevo",
             {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -228,7 +228,7 @@
                 });
            
         }else{
-            $http.post("/SistemaINEB/matricula_guadaEdit",
+            $http.post("/e/SistemaIMNEB/matricula_guadaEdit",
              {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -317,9 +317,9 @@
              if($scope.datos.id_grado != 0){
                 $scope.animmar = true;$scope.listadet++; 
                 $("#modal_reporte").modal();
-//                $http.post("/SistemaINEB/matricula_reporte",{id:})
+//                $http.post("/e/SistemaIMNEB/matricula_reporte",{id:})
 //                        .success(function(data){
-                 $scope.archivo = "Servicios/matricula/boleta_pago.jsp?id="+id;  
+                 $scope.archivo = "Servicios/matricula/boleta_pago.jsp?id="+id+"&usuario="+serveData.data.usuario;  
                         $scope.animmar = false; 
 //                 })
 //                 .error(function(data, status) {

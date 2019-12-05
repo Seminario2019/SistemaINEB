@@ -21,9 +21,9 @@ public class home_crud {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_USUARIO as id, rtrim(USUARIO) as usuario,rtrim(PRIMER_NOMBRE)+' '+rtrim(PRIMER_APELLIDO) as nombre \n" +
-"                ,'' as imagen,DIRECCION email,'' sexo,TELEFONO telefono,'' celular \n" +
-"               FROM USUARIO where USUARIO =  '"+usuario+"' ");
+      ResultSet rs = stmt.executeQuery("select id_usuario as id, rtrim(usuario) as usuario,rtrim(primer_nombre)+' '+rtrim(primer_apellido) as nombre \n" +
+"                ,'' as imagen,direccion email,'' sexo,telefono telefono,'' celular \n" +
+"               from usuario where usuario =  '"+usuario+"' ");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));

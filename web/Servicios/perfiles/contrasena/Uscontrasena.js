@@ -18,7 +18,7 @@ app.controller('Uscontrasena', ['$http','$scope','serveData','md5', function($ht
              $scope.dato.clave = md5.createHash($scope.dato.clave);
              $scope.dato.clave1 = md5.createHash($scope.dato.clave1); 
              $scope.dato.clave2 = md5.createHash($scope.dato.clave2);  
-           $http.post("/SistemaINEB/UsconSave",{datos:$scope.dato})
+           $http.post("/e/SistemaIMNEB/UsconSave",{datos:$scope.dato})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
               if(response[0].mensaje == 'uno'){

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package clases;
+package Servlet;
 
 import net.sf.jasperreports.engine.JRDefaultScriptlet;
 import net.sf.jasperreports.engine.JRScriptletException;

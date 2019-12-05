@@ -31,7 +31,7 @@ public class Jornada_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_JORNADA as id,rtrim(DESCRIPCION) as descripcion FROM JORNADA order by id_jornada desc");
+      ResultSet rs = stmt.executeQuery("select id_jornada as id,rtrim(descripcion) as descripcion from jornada order by id_jornada desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -58,8 +58,8 @@ public class Jornada_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_JORNADA as id,rtrim(DESCRIPCION) as descripcion FROM JORNADA "
-              + "where ID_JORNADA = '"+jornada+"' order by id_jornada desc");
+      ResultSet rs = stmt.executeQuery("select id_jornada as id,rtrim(descripcion) as descripcion from jornada \n" +
+"              where id_jornada = '"+jornada+"' order by id_jornada desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -88,7 +88,7 @@ public class Jornada_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-      ResultSet rs = stmt1.executeQuery("select max(ID_JORNADA)+1 as id from jornada; ");
+      ResultSet rs = stmt1.executeQuery("select max(id_jornada)+1 as id from jornada;");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -100,8 +100,8 @@ public class Jornada_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO jornada (ID_JORNADA,DESCRIPCION) \n" +
-                     "VALUES  (?,?)";
+      String query = "insert into jornada (id_jornada,descripcion) \n" +
+"                     values  (?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id1);
                                 stmt.setString(2,descripcion);
@@ -136,10 +136,10 @@ public class Jornada_CRUD {
     try {
       Connection con = conn.DBConect();
       
-       String query = "UPDATE JORNADA \n" +
-"               SET ID_JORNADA = ? \n" +
-"               , DESCRIPCION = ? \n" +
-"                WHERE  ID_JORNADA= ?";
+       String query = "update jornada \n" +
+"               set id_jornada = ? \n" +
+"               , descripcion = ? \n" +
+"                where  id_jornada= ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,id);
                                 stmt.setString(2,descripcion);

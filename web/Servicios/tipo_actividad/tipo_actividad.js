@@ -11,7 +11,7 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
     $scope.editando = false;
          
      
-        $http.post("/SistemaINEB/tactividad_lista" ).success(function(data){
+        $http.post("/e/SistemaIMNEB/tactividad_lista" ).success(function(data){
              $scope.list = data; 
              $scope.intc++;
             })
@@ -27,7 +27,7 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
         $scope.mostrarModal = function( id ){
                 $scope.variable = id;
 		// console.log( cliente );
-		$http.post("/SistemaINEB/tactividad_select",{ id :$scope.variable})
+		$http.post("/e/SistemaIMNEB/tactividad_select",{ id :$scope.variable})
                         .success(function(response){
                     $scope.dato = response[0];$scope.intc++;
                     
@@ -38,7 +38,43 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
                 
 	}
         
-       
+            $scope.eliminarModal = function( id ){
+                $scope.variable = id;
+		// console.log( cliente );
+		$http.post("/e/SistemaIMNEB/tactividad_delete",{ id :$scope.variable})
+                        .success(function(response){
+                            if(response[0].mensaje == 'uno'){
+                  swal( 'Exitoso!', 'Datos Eliminados!', 'success')   
+                  //$location.url("/plantilla");
+                  $scope.editado = {
+                        us1:true,
+                        us2:true,
+                        us3:true,
+                        us4:true,
+                        us5:true,
+                        us6:true,
+                        us7:true,
+                        us8:true,
+                        us9:true,
+                        us10:true,
+                        us11:true,
+                        us12:true,
+                        us13:true,
+                        us14:true,
+                        btn:true,
+                        btn1:false,
+                        btn2:true
+                    };
+                      $http.post("/e/SistemaIMNEB/tactividad_lista" ).success(function(data){
+                        $scope.list = data; 
+                        $scope.intc++;
+                       });
+              }
+              else  swal("Error",response[0].mensaje, "error");    
+            
+                });
+                
+	}
         
         
         
@@ -55,13 +91,13 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
 	}
         $scope.guardarnuevo = function(dato){ 
           if($scope.dato.nombre != "" &&  $scope.dato.seccion != "" ){
-            $http.post("/SistemaINEB/tactividad_nuevo",{datos:dato}).success(function(data){
+            $http.post("/e/SistemaIMNEB/tactividad_nuevo",{datos:dato}).success(function(data){
             
               if(data[0].mensaje == 'uno'){
                   swal( 'Exitoso!', 'Datos Guardados!', 'success')   
                   $scope.limpia(); 
                   $("#modal_nuegrados").modal('hide'); 
-                   $http.post("/SistemaINEB/tactividad_lista" ).success(function(data){
+                   $http.post("/e/SistemaIMNEB/tactividad_lista" ).success(function(data){
                     $scope.list = data; 
                     $scope.intc++;
                    });
@@ -113,7 +149,7 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
         ;
         $scope.guardar = function refreshData() {
           
-           $http.post("/SistemaINEB/tactividad_guadaEdit"
+           $http.post("/e/SistemaIMNEB/tactividad_guadaEdit"
             ,{datos:$scope.dato})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
@@ -140,7 +176,7 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
                         btn1:false,
                         btn2:true
                     };
-                      $http.post("/SistemaINEB/tactividad_lista" ).success(function(data){
+                      $http.post("/e/SistemaIMNEB/tactividad_lista" ).success(function(data){
                         $scope.list = data; 
                         $scope.intc++;
                        });

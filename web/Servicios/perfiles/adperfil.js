@@ -10,7 +10,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
         $scope.intc = 1;
     $scope.editando = false;
          $scope.usuario = [];
-       $http.post("/SistemaINEB/usuarios",{ usuario : serveData.data.usuario})
+       $http.post("/e/SistemaIMNEB/usuarios",{ usuario : serveData.data.usuario})
            .success(function(record3){
                  $scope.usuario =  record3;
                 serveData.data.imagen = "Servicios/perfiles/img_usuarios/imagen.jpg";
@@ -52,7 +52,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
 		})
 	}
         
-        $http.post("/SistemaINEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
+        $http.post("/e/SistemaIMNEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
              $scope.list = data; 
              $scope.intc++;
             })
@@ -68,7 +68,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
         $scope.mostrarModal = function( usuario ){
                 $scope.variable = usuario;
 		// console.log( cliente );
-		$http.post("/SistemaINEB/adperfilEdit",{ usuario :$scope.variable})
+		$http.post("/e/SistemaIMNEB/adperfilEdit",{ usuario :$scope.variable})
                         .success(function(response){
                     $scope.dato = response[0];$scope.intc++;
                     $scope.imagen = "Servicios/perfiles/img_usuarios/imagen.jpg?1."+$scope.intc;
@@ -93,7 +93,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
              $scope.datocon.contrasena = md5.createHash($scope.datocon.contrasena);
              $scope.datocon.contrasena1 = md5.createHash($scope.datocon.contrasena1); 
              $scope.datocon.contrasena2 = md5.createHash($scope.datocon.contrasena2); 
-           $http.post("/SistemaINEB/UsconSave",{datos:$scope.datocon})
+           $http.post("/e/SistemaIMNEB/UsconSave",{datos:$scope.datocon})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
               if(response[0].mensaje == 'uno'){
@@ -231,13 +231,13 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
                   dato.clave = md5.createHash(dato.clave); 
           if($scope.dato.nombre != "" &&  $scope.dato.apellido != "" && 
                   $scope.dato.usuario != "" && $scope.dato.clave != "" ){
-            $http.post("/SistemaINEB/nueperfilSave",{datos:dato}).success(function(data){
+            $http.post("/e/SistemaIMNEB/nueperfilSave",{datos:dato}).success(function(data){
             
               if(data[0].mensaje == 'uno'){
                   swal( 'Exitoso!', 'Datos Guardados!', 'success')   
                   $scope.limpia(); 
                   $("#modal_nueperfil").modal('hide'); 
-                  $http.post("/SistemaINEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
+                  $http.post("/e/SistemaIMNEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
                         $scope.list= data;
                         $scope.paginas();
                     });
@@ -288,7 +288,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
         }
         ;
         $scope.guardar = function refreshData() {
-           $http.post("/SistemaINEB/GuardaEditado"
+           $http.post("/e/SistemaIMNEB/GuardaEditado"
             ,{datos:$scope.dato})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
@@ -315,7 +315,7 @@ app.controller("adperfil", function($scope,$http,$location,serveData,uploadfoto,
                         btn1:false,
                         btn2:true
                     };
-                    $http.post("/SistemaINEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
+                    $http.post("/e/SistemaIMNEB/adperfil",{ usuario : serveData.data.usuario}).success(function(data){
                         $scope.list= data;
                         $scope.paginas();
                     });

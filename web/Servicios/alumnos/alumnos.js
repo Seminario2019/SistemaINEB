@@ -36,7 +36,7 @@
     };
     $scope.campos();
     $scope.numero_s = function(){
-        $http.post("/SistemaINEB/alumno_correlativo").success(function( data ){
+        $http.post("/e/SistemaIMNEB/alumno_correlativo").success(function( data ){
 		$scope.datos.correlativo = data[0].id;
 	});
     }
@@ -101,7 +101,7 @@
     
 
     $scope.lista_alumno = function(){       
-      $http.post("/SistemaINEB/alumno_lista" ).success(function(data){
+      $http.post("/e/SistemaIMNEB/alumno_lista" ).success(function(data){
              $scope.list_alumno = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -160,7 +160,7 @@
            $scope.btn_guardar = false;  
         if($scope.btn_editar1 == false){   
            $scope.btn_guardar = false;  
-            $http.post("/SistemaINEB/alumno_nuevo",
+            $http.post("/e/SistemaIMNEB/alumno_nuevo",
             {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -190,7 +190,7 @@
                 });
            
         }else{
-            $http.post("/SistemaINEB/alumno_guadaEdit",
+            $http.post("/e/SistemaIMNEB/alumno_guadaEdit",
              {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -249,8 +249,71 @@
             }  
             return resultado;
         };
+        $scope.eliminar = function(id){
+               swal({
+        title: "Seguro?",
+        text: "eliminar dato #"+id,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "si, eliminar!",
+        closeOnConfirm: false
+      },
+      function(){
         
+            $http.post("/e/SistemaIMNEB/alumno_eliminar",
+             {datos:$scope.datos} )
+             .success(function(response){
+                    if( response[0].id > 0){
+                    $("#modal_guardar").modal('hide');  
+                        swal("¡Exito¡", "Datos fueron eliminados", "success"); 
+                        
+                 $scope.lista_alumno();      
+                        
+                $scope.btn_nuevo = true;
+                $scope.btn_guardar = false;
+                $scope.btn_buscar = true;    
+                $scope.btn_buscar1 = true;  
+                $scope.btn_editar = false; 
+                $scope.btn_editar1 = false;
+                $scope.btn_cancelar  = false;
+                $scope.bus_series  = true;
+                 }
+                    else  {  
+    $("#modal_guardar").modal('hide');  swal("Error¡", response, "error");   
+                            $scope.btn_guardar = true; }
+                })
+                .error(function(data, status) {
+    $("#modal_guardar").modal('hide');  
+                  swal("Error","datos no eliminados: posible causa: .Se desconecto de la red o no tiene datos, VERIFIQUE o intentar de nuevo guardar. Error:#"+status+"-"+ data+"-", "error"); 
+                  $scope.btn_guardar = true; ;
+                })
+                .finally(function() {
+                  //$scope.btn_guardar =  false;
+                });
+      });   
+                    
+        };        
       
-        
+   var i=0; 
+        $scope.generar_reporte = function(id){
+             if($scope.datos.id_grado != 0){
+                $scope.animmar = true;$scope.listadet++; 
+                $("#modal_reporte").modal();
+//                $http.post("/e/SistemaIMNEB/matricula_reporte",{id:})
+//                        .success(function(data){
+                 $scope.archivo = "Servicios/alumnos/zonas.jsp?id="+id;  
+                        $scope.animmar = false; 
+//                 })
+//                 .error(function(data, status) {
+//                      swal("Error","Error:#"+status+"-"+ data, "error");                   
+//                    })
+//                .finally(function() {scope.animmar = false;  
+//                    })
+                } 
+                else {$("#modal_reporte").modal();}
+                 i++;    
+                    
+        };      
       
 });

@@ -21,7 +21,7 @@ app.config(['$routeProvider',function($routeProvider ) {
         $stateProvider                                                                                             
                 .state('home', {url: '/principal',
                 views: {'header': {templateUrl: 'Servicios/home/header.jsp'},
-                        'content': {templateUrl: 'Servicios/home/plantilla.jsp'}
+                        //'content': {templateUrl: 'Servicios/home/plantilla.jsp'}
                         }})
                 .state('perfil', {url: '/principal',views: {'content': {templateUrl: 'Servicios/perfiles/perfil.jsp',controller:"adperfil"}}})   
                 .state('adperfil', {url: '/principal',views: {'content': {templateUrl: 'Servicios/perfiles/adperfil.jsp',controller:"adperfil"}}})   

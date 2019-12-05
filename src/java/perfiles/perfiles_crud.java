@@ -22,9 +22,9 @@ public class perfiles_crud {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT id_user as id, rtrim(usuario) as usuario,rtrim(nombre)+' '+rtrim(apellido) as nombre" +
-"                 ,rtrim(imagen) as imagen  ,email,sexo,telefono,celular" +
-"                 FROM usuarios where usuario  =  '"+usuario+"' ");
+      ResultSet rs = stmt.executeQuery("select id_user as id, rtrim(usuario) as usuario,rtrim(nombre)+' '+rtrim(apellido) as nombre\n" +
+"                 ,rtrim(imagen) as imagen  ,email,sexo,telefono,celular\n" +
+"                 from usuarios where usuario  =  '"+usuario+"'");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -56,7 +56,7 @@ public class perfiles_crud {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_USUARIO as id,rtrim(USUARIO) as usuario, rtrim(PRIMER_NOMBRE) as nombre,rtrim(SEGUNDO_NOMBRE) as nombre1,rtrim(PRIMER_APELLIDO) as apellido ,rtrim(SEGUNDO_APELLIDO) as apellido1 ,'' as imagen,DIRECCION,TELEFONO  FROM USUARIO");
+      ResultSet rs = stmt.executeQuery("select id_usuario as id,rtrim(usuario) as usuario, rtrim(primer_nombre) as nombre,rtrim(segundo_nombre) as nombre1,rtrim(primer_apellido) as apellido ,rtrim(segundo_apellido) as apellido1 ,'' as imagen,direccion,telefono  from usuario");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -66,7 +66,7 @@ public class perfiles_crud {
             obj.put("apellido", rs.getString("apellido"));
             obj.put("apellido1", rs.getString("apellido1"));
             obj.put("avatar", rs.getString("imagen"));
-            obj.put("direccion", rs.getString("DIRECCION"));
+            obj.put("direccion", rs.getString("direccion"));
             obj.put("telefono", rs.getString("telefono")); 
             
                  
@@ -90,9 +90,9 @@ public class perfiles_crud {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery(" SELECT ID_USUARIO as id,rtrim(USUARIO) as usuario, rtrim(PRIMER_NOMBRE) as nombre, rtrim(SEGUNDO_NOMBRE) as nombre1 \n" +
-",rtrim(PRIMER_APELLIDO) as apellido ,rtrim(SEGUNDO_APELLIDO) as apellido1 ,'' as imagen,telefono, DIRECCION\n" +
-"             FROM USUARIO  where ID_USUARIO = "+usuario+"");
+      ResultSet rs = stmt.executeQuery(" select id_usuario as id,rtrim(usuario) as usuario, rtrim(primer_nombre) as nombre, rtrim(segundo_nombre) as nombre1 \n" +
+",rtrim(primer_apellido) as apellido ,rtrim(segundo_apellido) as apellido1 ,'' as imagen,telefono, direccion\n" +
+"             from usuario  where id_usuario = "+usuario+"");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -140,8 +140,8 @@ public class perfiles_crud {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO usuario (ID_USUARIO,USUARIO,PASSWORD,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,DIRECCION,TELEFONO) \n" +
-                     "VALUES  (?,?,?,?,?,?,?,?,?)";
+      String query = "insert into usuario (id_usuario,usuario,password,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,direccion,telefono) \n" +
+"                     values  (?,?,?,?,?,?,?,?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id);
                                 stmt.setString(2,usuario);
@@ -182,7 +182,7 @@ public class perfiles_crud {
     try {
       Connection con = conn.DBConect();
       
-       String query = "UPDATE USUARIO set PASSWORD = ? WHERE USUARIO = ?";
+       String query = "update usuario set password = ? where usuario = ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,clave);
                                 stmt.setString(2,usuario);
@@ -216,14 +216,14 @@ public class perfiles_crud {
     try {
       Connection con = conn.DBConect();
       
-       String query = "UPDATE USUARIO \n" +
-"               SET PRIMER_NOMBRE = ? \n" +
-"               ,SEGUNDO_NOMBRE = ? \n" +
-"               ,PRIMER_APELLIDO = ? \n" +
-"               ,SEGUNDO_APELLIDO = ? \n" +
-"               ,DIRECCION = ? \n" +
+       String query = "update usuario \n" +
+"               set primer_nombre = ? \n" +
+"               ,segundo_nombre = ? \n" +
+"               ,primer_apellido = ? \n" +
+"               ,segundo_apellido = ? \n" +
+"               ,direccion = ? \n" +
 "               ,telefono = ? \n" +
-"                WHERE USUARIO = ?";
+"                where usuario = ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,nombre);
                                 stmt.setString(2,nombre1);

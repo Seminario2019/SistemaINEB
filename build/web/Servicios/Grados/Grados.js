@@ -11,7 +11,7 @@ app.controller("Grados", function($scope,$http,$location) {
     $scope.editando = false;
          
      
-        $http.post("/SistemaINEB/Grados_lista" ).success(function(data){
+        $http.post("/e/SistemaIMNEB/Grados_lista" ).success(function(data){
              $scope.list = data; 
              $scope.intc++;
             })
@@ -27,7 +27,7 @@ app.controller("Grados", function($scope,$http,$location) {
         $scope.mostrarModal = function( id ){
                 $scope.variable = id;
 		// console.log( cliente );
-		$http.post("/SistemaINEB/Grado_selgrado",{ id :$scope.variable})
+		$http.post("/e/SistemaIMNEB/Grado_selgrado",{ id :$scope.variable})
                         .success(function(response){
                     $scope.dato = response[0];$scope.intc++;
                     
@@ -37,7 +37,43 @@ app.controller("Grados", function($scope,$http,$location) {
                 });
                 
 	}
-        
+         $scope.eliminarModal = function( id ){
+                $scope.variable = id;
+		// console.log( cliente );
+		$http.post("/e/SistemaIMNEB/Grado_elimina",{ id :$scope.variable})
+                        .success(function(response){
+                    if(response[0].mensaje == 'uno'){
+                  swal( 'Exitoso!', 'Dato Eliminado!', 'success')   
+                  //$location.url("/plantilla");
+                  $("#modal_editgrados").modal('hide');
+                  $scope.editado = {
+                        us1:true,
+                        us2:true,
+                        us3:true,
+                        us4:true,
+                        us5:true,
+                        us6:true,
+                        us7:true,
+                        us8:true,
+                        us9:true,
+                        us10:true,
+                        us11:true,
+                        us12:true,
+                        us13:true,
+                        us14:true,
+                        btn:true,
+                        btn1:false,
+                        btn2:true
+                    };
+                      $http.post("/e/SistemaIMNEB/Grados_lista" ).success(function(data){
+                        $scope.list = data; 
+                        $scope.intc++;
+                       });
+              }
+              else  swal("Error",response[0].mensaje, "error");    
+                });
+                
+	}
        
         
         
@@ -55,13 +91,13 @@ app.controller("Grados", function($scope,$http,$location) {
 	}
         $scope.guardarnuevo = function(dato){ 
           if($scope.dato.nombre != "" &&  $scope.dato.seccion != "" ){
-            $http.post("/SistemaINEB/Grados_nuevo",{datos:dato}).success(function(data){
+            $http.post("/e/SistemaIMNEB/Grados_nuevo",{datos:dato}).success(function(data){
             
               if(data[0].mensaje == 'uno'){
                   swal( 'Exitoso!', 'Datos Guardados!', 'success')   
                   $scope.limpia(); 
                   $("#modal_nuegrados").modal('hide'); 
-                   $http.post("/SistemaINEB/Grados_lista" ).success(function(data){
+                   $http.post("/e/SistemaIMNEB/Grados_lista" ).success(function(data){
                     $scope.list = data; 
                     $scope.intc++;
                    });
@@ -113,7 +149,7 @@ app.controller("Grados", function($scope,$http,$location) {
         ;
         $scope.guardar = function refreshData() {
           
-           $http.post("/SistemaINEB/Grado_guadaEdit"
+           $http.post("/e/SistemaIMNEB/Grado_guadaEdit"
             ,{datos:$scope.dato})
              .success(function(response){
              //$window.alert(response[0].mensaje);*/swal( 'Good job!', 'You clicked the button!', 'success')
@@ -140,7 +176,7 @@ app.controller("Grados", function($scope,$http,$location) {
                         btn1:false,
                         btn2:true
                     };
-                      $http.post("/SistemaINEB/Grados_lista" ).success(function(data){
+                      $http.post("/e/SistemaIMNEB/Grados_lista" ).success(function(data){
                         $scope.list = data; 
                         $scope.intc++;
                        });

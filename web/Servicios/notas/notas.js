@@ -34,7 +34,7 @@
     };
     $scope.campos();
     $scope.numero_s = function(){
-        $http.post("/SistemaINEB/nota_correlativo").success(function( data ){
+        $http.post("/e/SistemaIMNEB/nota_correlativo").success(function( data ){
 		$scope.datos.id = data[0].id;
 	});
     }
@@ -96,11 +96,11 @@
         $("#modal_notas").modal();
     }
     
-           $http.post("/SistemaINEB/actividad_lista" ).success(function(data){
+           $http.post("/e/SistemaIMNEB/actividad_lista" ).success(function(data){
              $scope.list_actividad = data; 
              $scope.intc++;
           }); 
-          $http.post("/SistemaINEB/alumno_lista" ).success(function(data){
+          $http.post("/e/SistemaIMNEB/alumno_lista" ).success(function(data){
              $scope.list_alumno = data; 
              //$scope.nfecha1 =  new Date(data.nfecha);
              $scope.intc++;
@@ -113,7 +113,7 @@
 	};
         
     $scope.lista_notas = function(){       
-      $http.post("/SistemaINEB/notas_lista" ).success(function(data){
+      $http.post("/e/SistemaIMNEB/notas_lista" ).success(function(data){
              $scope.list_notas = data; 
              $scope.intc++;
           }); 
@@ -163,7 +163,7 @@
            $scope.btn_guardar = false;  
         if($scope.btn_editar1 == false){   
            $scope.btn_guardar = false;  
-            $http.post("/SistemaINEB/notas_nuevo",
+            $http.post("/e/SistemaIMNEB/notas_nuevo",
             {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){
@@ -193,7 +193,7 @@
                 });
            
         }else{
-            $http.post("/SistemaINEB/nota_guadaEdit",
+            $http.post("/e/SistemaIMNEB/nota_guadaEdit",
              {datos:$scope.datos} )
              .success(function(response){
                     if( response[0].id > 0){

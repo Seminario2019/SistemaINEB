@@ -33,21 +33,22 @@
 <%
           
             String id  = request.getParameter("id");
+            String usuario  = request.getParameter("usuario");
             ServletContext context = request.getServletContext();
             String realpath = context.getRealPath("/");
             System.out.print(realpath);
                Conexion conn =  new Conexion();     
                 Connection con= conn.DBConect();
-          String reportName = realpath+"\\Reportes\\5.jasper";
+          String reportName = realpath+"Reportes/5.jasper";
           Map<String, Object> parameters = new HashMap<String, Object>();
                         parameters.clear();
                         parameters.put(JRParameter.REPORT_LOCALE, new Locale("es", "GT"));
 			parameters.put("id",id);                      
+			parameters.put("usuario",usuario);                        
 JasperPrint print = JasperFillManager.fillReport(reportName,parameters,con);
 
 
-JasperExportManager.exportReportToPdfStream(print,
-response.getOutputStream());
+JasperExportManager.exportReportToPdfStream(print,response.getOutputStream());
 
 		
 

@@ -31,7 +31,7 @@ public class notas_CRUD {
            try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT case when MAX(ID_NOTA) IS NULL then 1 else MAX(ID_NOTA) +1 END AS id FROM registro_nota; ");
+      ResultSet rs = stmt.executeQuery("select case when max(id_nota) is null then 1 else max(id_nota) +1 end as id from registro_nota;");
        while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -56,20 +56,20 @@ public class notas_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT t0.ID_NOTA as id, t0.NOTA,t0.PERIODO, t1.ID_ACTIVIDAD,t2.NOMBRE, t3.CORRELATIVO,CONCAT(t3.PRIMER_NOMBRE,\" \",T3.SEGUNDO_NOMBRE,\" \", t3.PRIMER_APELLIDO) as nalumno\n" +
-"FROM registro_nota t0\n" +
-"INNER JOIN actividad t1 on t1.ID_ACTIVIDAD = t0.ACTIVIDAD_ID_ACTIVIDAD\n" +
-"INNER JOIN tipo_actividad t2 on t2.ID_TIPO_ACTIVIDAD = t1.ID_TIPO_ACTIVIDAD\n" +
-"INNER JOIN alumno t3 on t3.CORRELATIVO = t0.USUARIO_ID_USUARIO\n" +
-"order by t0.ID_NOTA asc");
+      ResultSet rs = stmt.executeQuery("select t0.id_nota as id, t0.nota,t0.periodo, t1.id_actividad,t2.nombre, t3.correlativo,concat(t3.primer_nombre,\" \",t3.segundo_nombre,\" \", t3.primer_apellido) as nalumno\n" +
+"from registro_nota t0\n" +
+"inner join actividad t1 on t1.id_actividad = t0.actividad_id_actividad\n" +
+"inner join tipo_actividad t2 on t2.id_tipo_actividad = t1.id_tipo_actividad\n" +
+"inner join alumno t3 on t3.correlativo = t0.usuario_id_usuario\n" +
+"order by t0.id_nota asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
-            obj.put("nota", rs.getString("NOTA"));
-            obj.put("periodo", rs.getString("PERIODO"));
-            obj.put("id_actividad", rs.getString("ID_ACTIVIDAD"));
-            obj.put("actividad", rs.getString("NOMBRE"));
-            obj.put("id_alumno", rs.getString("CORRELATIVO"));
+            obj.put("nota", rs.getString("nota"));
+            obj.put("periodo", rs.getString("periodo"));
+            obj.put("id_actividad", rs.getString("id_actividad"));
+            obj.put("actividad", rs.getString("nombre"));
+            obj.put("id_alumno", rs.getString("correlativo"));
             obj.put("alumno", rs.getString("nalumno"));
             
                  
@@ -93,8 +93,8 @@ public class notas_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT ID_TIPO_ACTIVIDAD as id,rtrim(NOMBRE) as nombre FROM TIPO_ACTIVIDAD "
-              + "where ID_TIPO_ACTIVIDAD = "+actividad+" order by ID_TIPO_ACTIVIDAD desc");
+      ResultSet rs = stmt.executeQuery("select id_tipo_actividad as id,rtrim(nombre) as nombre from tipo_actividad \n" +
+"              where id_tipo_actividad = "+actividad+" order by id_tipo_actividad desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -122,7 +122,7 @@ public class notas_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
-   ResultSet rs = stmt1.executeQuery("SELECT case when MAX(ID_NOTA) IS NULL then 1 else MAX(ID_NOTA) +1 END AS id FROM registro_nota; ");
+   ResultSet rs = stmt1.executeQuery("select case when max(id_nota) is null then 1 else max(id_nota) +1 end as id from registro_nota;");
      
       while(rs.next()){
             JSONObject obj=new JSONObject();
@@ -135,8 +135,8 @@ public class notas_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO registro_nota (ID_NOTA,USUARIO_ID_USUARIO,ACTIVIDAD_ID_ACTIVIDAD,NOTA,PERIODO) \n" +
-                     "VALUES  (?,?,?,?,?)";
+      String query = "insert into registro_nota (id_nota,usuario_id_usuario,actividad_id_actividad,nota,periodo) \n" +
+"                     values  (?,?,?,?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id1);
                                 stmt.setInt(2,Integer.parseInt(id_alumno));
@@ -174,12 +174,12 @@ public class notas_CRUD {
     try {
       Connection con = conn.DBConect();
                         
-   String query = "UPDATE registro_nota \n" +
-"               SET USUARIO_ID_USUARIO = ? \n" +
-"               , ACTIVIDAD_ID_ACTIVIDAD = ? \n" +
-"               , NOTA = ? \n" +
-"               , PERIODO = ? \n" +
-"                WHERE  ID_NOTA= ?";
+   String query = "update registro_nota \n" +
+"               set usuario_id_usuario = ? \n" +
+"               , actividad_id_actividad = ? \n" +
+"               , nota = ? \n" +
+"               , periodo = ? \n" +
+"                where  id_nota= ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                
                                 

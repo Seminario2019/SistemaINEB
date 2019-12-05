@@ -30,7 +30,7 @@ public class Grados_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT CODIGO_GRADO as id,rtrim(NOMBRE) as nombre,rtrim(SECCION) as seccion FROM GRADO order by CODIGO_GRADO desc");
+      ResultSet rs = stmt.executeQuery("select codigo_grado as id,rtrim(nombre) as nombre,rtrim(seccion) as seccion from grado order by codigo_grado desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -58,8 +58,8 @@ public class Grados_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT CODIGO_GRADO as id,rtrim(nombre) as nombre ,rtrim(SECCION) as seccion  FROM grado "
-              + "where CODIGO_GRADO = '"+grado+"' order by CODIGO_GRADO desc");
+      ResultSet rs = stmt.executeQuery("select codigo_grado as id,rtrim(nombre) as nombre ,rtrim(seccion) as seccion  from grado \n" +
+"              where codigo_grado = '"+grado+"' order by codigo_grado desc");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             obj.put("id", rs.getString("id"));
@@ -89,7 +89,7 @@ public class Grados_CRUD {
       Connection con = conn.DBConect();
       Statement stmt1 = con.createStatement();
    
-      ResultSet rs = stmt1.executeQuery("select max(CODIGO_GRADO)+1 as id from grado; ");
+      ResultSet rs = stmt1.executeQuery("select max(codigo_grado)+1 as id from grado; ");
       while(rs.next()){
             JSONObject obj=new JSONObject();
             id1=rs.getInt("id");
@@ -101,8 +101,8 @@ public class Grados_CRUD {
       con.close();
       
       con = conn.DBConect();
-      String query = "INSERT INTO GRADO (CODIGO_GRADO,NOMBRE,SECCION) \n" +
-                     "VALUES  (?,?,?)";
+      String query = "insert into grado (codigo_grado,nombre,seccion) \n" +
+"                     values  (?,?,?)";
            PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setInt(1,id1);
                                 stmt.setString(2,nombre);
@@ -138,14 +138,48 @@ public class Grados_CRUD {
     try {
       Connection con = conn.DBConect();
       
-       String query = "UPDATE grado \n" +
-"               SET NOMBRE = ? \n" +
-"               , SECCION = ? \n" +
-"                WHERE  CODIGO_GRADO= ?";
+       String query = "update grado \n" +
+"             set nombre = ? \n" +
+"              , seccion = ? \n" +
+"                where  codigo_grado= ?";
       PreparedStatement stmt = con.prepareStatement(query);
                                 stmt.setString(1,nombre);
                                 stmt.setString(2,seccion);
                                 stmt.setString(3,id);
+				stmt.executeUpdate();
+      stmt.close();
+      con.close();
+      JSONObject obj=new JSONObject();
+      
+            obj.put("mensaje", "uno");
+            
+                 
+            list.put(obj);
+    }catch (SQLException e){
+      System.out.println("error: "+e.getMessage());
+      JSONObject obj=new JSONObject();
+           try {
+               obj.put("mensaje", e.getMessage());
+               list.put(obj);
+           } catch (JSONException ex) {
+               Logger.getLogger(Grados_CRUD.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    }     catch (JSONException ex) {
+              Logger.getLogger(Grados_CRUD.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    return list;
+  }
+  
+  public JSONArray elimina(String id) {
+       JSONArray list = new JSONArray();   
+     
+    try {
+      Connection con = conn.DBConect();
+      
+       String query = "delete from grado \n" +
+"                where  codigo_grado= ?";
+      PreparedStatement stmt = con.prepareStatement(query);
+                                stmt.setString(1,id);
 				stmt.executeUpdate();
       stmt.close();
       con.close();

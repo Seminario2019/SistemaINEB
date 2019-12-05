@@ -67,11 +67,14 @@
                             <a  ng-click="limpiar()" class="btn btn-info btn-sm"  ng-show="btn_nuevo">Nuevo</a>
                             <a  ng-click="guardar()" class="btn btn-success btn-sm"  ng-show="btn_guardar">Guardar</a>
                             <a  ng-click="editar()" class="btn btn-warning btn-sm"  ng-show="btn_editar">Editar</a>
+                            <a  ng-click="eliminar(datos.correlativo)" class="btn btn-warning btn-sm"  ng-show="btn_editar">eliminar</a>
                             <a  ng-click="buscar()" class="btn btn-default btn-sm"  ng-show="btn_buscar">Buscar</a>
                             <a  ng-click="calcelar()" class="btn btn-primary btn-sm"  ng-show="btn_cancelar">Calcelar</a>
+                            <a style="float:right "  ng-click="generar_reporte(datos.correlativo)" class="btn btn-success btn-sm" ng-show="btn_nuevo" ><span class="fa fa-print"> </span>IMPRIMIR</a>
                             
                              <div ng-include="'Servicios/alumnos/modal_alumno.html'"></div> 
                              <div ng-include="'Servicios/actividad/modal_guarda.html'"></div> 
+                             <div ng-include="'Servicios/alumnos/modal_reporte.jsp'"></div>
                  
             </div>
         </div>  
