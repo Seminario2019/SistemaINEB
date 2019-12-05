@@ -34,7 +34,7 @@
         <br/>
         <div class="row">
            <div class=" col-md-6">
-            <table class="table table-bordered table-sm table-hover col-md-6" >
+            <table class="table table-bordered table-sm table-hover col-md-6" style="display: block; overflow-x: auto; white-space: nowrap;">
                 <thead style=" background-color: lightcyan">
                 <th >Avatar&nbsp;</th>
                 <th>Usuario&nbsp;<a ng-click="sort_by('usuario');"><i class="fa fa-sort"></i></a></th>

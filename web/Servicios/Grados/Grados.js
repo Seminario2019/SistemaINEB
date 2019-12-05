@@ -45,7 +45,6 @@ app.controller("Grados", function($scope,$http,$location) {
                     if(response[0].mensaje == 'uno'){
                   swal( 'Exitoso!', 'Dato Eliminado!', 'success')   
                   //$location.url("/plantilla");
-                  $("#modal_editgrados").modal('hide');
                   $scope.editado = {
                         us1:true,
                         us2:true,
@@ -70,15 +69,11 @@ app.controller("Grados", function($scope,$http,$location) {
                         $scope.intc++;
                        });
               }
-              else  swal("Error",response[0].mensaje, "error");    
+              else  swal("Error","Dato no se puede eliminar, esta asignado a otro modulo", "error");    
                 });
                 
 	}
        
-        
-        
-        
-        
         
         
         $scope.limpia = function(){

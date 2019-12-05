@@ -58,13 +58,13 @@ public class matricula_CRUD {
     try {
       Connection con = conn.DBConect();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select t0.id_matricula, t1.codigo_pago,t1.tipo_pago,t2.id_jornada,t2.descripcion,t3.correlativo, concat(t3.primer_nombre,\" \",t3.segundo_nombre,\" \",t3.primer_apellido) as nombre, t4.codigo_grado,t4.nombre as grado,\n" +
+      ResultSet rs = stmt.executeQuery("select t0.id_matricula, t1.codigo_pago,t1.tipo_pago,t2.id_jornada,t2.descripcion,t3.correlativo, concat(t3.primer_nombre,' ',t3.segundo_nombre, ' ',t3.primer_apellido) as nombre, t4.codigo_grado,t4.nombre as grado,\n" +
 "t0.fecha_matricula,t0.valor\n" +
 "from matricula t0\n" +
 "inner join pago t1 on t0.pago_codigo_pago = t1.codigo_pago\n" +
 "inner join jornada t2 on t0.jornada_id_jornada = t2.id_jornada\n" +
 "inner join alumno t3 on t0.alumno_correlativo = t3.correlativo\n" +
-"inner join grado t4 on t0.grado_codigo_grado = t4.codigo_grado                                             \n" +
+"inner join grado t4 on t0.grado_codigo_grado = t4.codigo_grado                   \n" +
 "order by t0.id_matricula asc");
       while(rs.next()){
             JSONObject obj=new JSONObject();            

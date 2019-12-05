@@ -45,10 +45,10 @@
                     <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" >
                         
                          <td style=" text-align:  center">
-                            <a ng-click="mostrarModal( data.id )" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a ng-click="mostrarModal( data.id )" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 			</td>
                         <td>
-                            <a ng-click="eliminarModal( data.id )" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                            <a ng-click="eliminarModal( data.id )" class="btn btn-warning "><i class="fa fa-edit"></i></a>
 			</td>
                         <td style=" text-align: right">{{data.id}}</td>
                         <td>{{data.nombre}}</td>

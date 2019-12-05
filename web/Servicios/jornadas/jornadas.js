@@ -39,8 +39,42 @@ app.controller("jornadas", function($scope,$http,$location,serveData,uploadfoto,
                 
 	}
         
-       
-        
+       $scope.eliminarModal = function( usuario ){
+                $scope.variable = usuario;
+		// console.log( cliente );
+		$http.post("/e/SistemaIMNEB/Jornada_elimina",{ id :$scope.variable})
+                        .success(function(response){
+                    if(response[0].mensaje == 'uno'){
+                  swal( 'Exitoso!', 'Dato Eliminado!', 'success')   
+                  //$location.url("/plantilla");
+                  $scope.editado = {
+                        us1:true,
+                        us2:true,
+                        us3:true,
+                        us4:true,
+                        us5:true,
+                        us6:true,
+                        us7:true,
+                        us8:true,
+                        us9:true,
+                        us10:true,
+                        us11:true,
+                        us12:true,
+                        us13:true,
+                        us14:true,
+                        btn:true,
+                        btn1:false,
+                        btn2:true
+                    };
+                     $http.post("/e/SistemaIMNEB/Jornada_lista",{ usuario : serveData.data.usuario}).success(function(data){
+                            $scope.list = data; 
+                            $scope.intc++;
+                       });
+              }
+              else  swal("Error","Dato no se puede eliminar, esta asignado a otro modulo", "error");   
+                });
+                
+	}    
         
         
         

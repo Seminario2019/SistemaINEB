@@ -167,6 +167,38 @@ public class Jornada_CRUD {
           }
     return list;
   }
-    
+   public JSONArray elimina(String id) {
+       JSONArray list = new JSONArray();   
+     
+    try {
+      Connection con = conn.DBConect();
+      
+       String query = "delete from jornada \n" +
+"                where  id_jornada= ?";
+      PreparedStatement stmt = con.prepareStatement(query);
+                                stmt.setString(1,id);
+				stmt.executeUpdate();
+      stmt.close();
+      con.close();
+      JSONObject obj=new JSONObject();
+      
+            obj.put("mensaje", "uno");
+            
+                 
+            list.put(obj);
+    }catch (SQLException e){
+      System.out.println("error: "+e.getMessage());
+      JSONObject obj=new JSONObject();
+           try {
+               obj.put("mensaje", e.getMessage());
+               list.put(obj);
+           } catch (JSONException ex) {
+               Logger.getLogger(Jornada_CRUD.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    }     catch (JSONException ex) {
+              Logger.getLogger(Jornada_CRUD.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    return list;
+  } 
     
 }

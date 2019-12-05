@@ -33,25 +33,25 @@
         <br/>
         <div class="row">
             <div class=" col-md-6">
-            <table class="table table-bordered table-sm table-hover col-md-6" >
+            <table class="table table-bordered table-sm table-hover col-md-6" style="display: block; overflow-x: auto; white-space: nowrap;">
                 <thead style=" background-color: lightcyan; align-content: center">
+                <th>EDITAR</th>
+                <th>ELIMINA</th>
                 <th>ID JORNADA&nbsp;<a ng-click="sort_by('id_jornada');"><i class="fa fa-sort"></i></a></th>
                 <th>DESCRIPSIÓN&nbsp;<a ng-click="sort_by('descripcion');"><i class="fa fa-sort"></i></a></th>
-                <th>EDITAR</th>
-                <!--th>eliminar</th-->
                 </thead>
                 <tbody>
                     <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" >
                         
+                         <td style=" text-align:  center">
+                            <a ng-click="mostrarModal( data.id )" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+			</td>
+                        <td>
+                            <a ng-click="eliminarModal( data.id )" class="btn btn-warning "><i class="fa fa-edit"></i></a>
+			</td>
                         <td style=" text-align:  right">{{data.id}}</td>
                         <td>{{data.descripcion}}</td>
                         
-                         <td style=" text-align:  center">
-                            <a ng-click="mostrarModal( data.id )" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-			</td>
-                        <!--td>
-                            <a ng-click="eliminarModal( data.id )" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-			</td-->
                     </tr>
                 </tbody>
                 <tfoot style=" text-align: right;" >

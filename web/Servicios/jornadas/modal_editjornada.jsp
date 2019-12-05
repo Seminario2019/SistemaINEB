@@ -13,7 +13,7 @@
           <form  class="form-inline"   style="text-align: center; background-color: #ffffff; border-color:  #FFC414;  "    >
                        
                                        
-                       <table class=" table table-bordered table-sm table-hover form-group" style="text-align: left; margin-left: 2%; margin-right:2%;"  > 
+                       <table class=" table table-bordered table-sm table-hover form-group" style="text-align: left; margin-left: 2%; margin-right:2%; display: block; overflow-x: auto; white-space: nowrap;" > 
                            <tr><td>  <label style="width: 100px;  text-align: left;">Id jornada</label>  </td><td>
                             <input type="text" disabled required class="form-control" value="" placeholder="Id" size="50" ng-model="dato.id">
                             

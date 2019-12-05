@@ -70,7 +70,7 @@ app.controller("tipo_actividad", function($scope,$http,$location,serveData,md5) 
                         $scope.intc++;
                        });
               }
-              else  swal("Error",response[0].mensaje, "error");    
+              else  swal("Error","Dato no se puede eliminar, esta asignado a otro modulo", "error");     
             
                 });
                 

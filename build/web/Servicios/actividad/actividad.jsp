@@ -12,7 +12,7 @@
                 <div class="row  form-group form-group-sm form-inline " > 
                         <div class="col-md-6">  
                             
-                            <table class=" table table-bordered table-sm table-hover col-md-6" style="width: 100%">
+                            <table class=" table table-bordered table-sm table-hover col-md-6" style="width: 100% ; display: block; overflow-x: auto; white-space: nowrap;">
                                  <tr>    
                                      <td>Id actividad</td>
                                      <td>
